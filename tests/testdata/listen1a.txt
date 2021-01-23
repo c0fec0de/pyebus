@@ -1,0 +1,5 @@
+b7v z1Timer.Friday = 06:00;22:00;-:-;-:-;-:-;-:-
+
+b7v PrEnergySum = 2
+
+bai errorhistory = nosignal

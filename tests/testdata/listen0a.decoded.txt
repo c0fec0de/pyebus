@@ -1,0 +1,132 @@
+
+bai WarmstartDemand = no
+  bai WarmstartDemand ("yesno='no'",)
+
+bai WaterHcFlowMax = 3063
+  bai WaterHcFlowMax ('=3063',)
+
+bai WaterPressure = 2.125;ok
+  bai WaterPressure ("press='2.125 bar'", "sensor='ok'", "press+sensor='2.125 bar'")
+
+bai WaterPressure = 2.125
+  bai WaterPressure ("press='2.125 bar'", 'sensor=NA', 'press+sensor=NA')
+
+mc.3 Status = 40;off;38.31;26
+  mc.3 Status ("temp0.0='40 °C'", "onoff='off'", "temp='38.31 °C'", "temp0.1='26 °C'")
+
+mc.4 Status = 0;off;36.50;24
+  mc.4 Status ("temp0.0='0 °C'", "onoff='off'", "temp='36.5 °C'", "temp0.1='24 °C'")
+
+mc.5 Status = 0;off;30.31;23
+  mc.5 Status ("temp0.0='0 °C'", "onoff='off'", "temp='30.31 °C'", "temp0.1='23 °C'")
+
+bai WaterpressureBranchControlOff = off
+  bai WaterpressureBranchControlOff ("onoff='off'",)
+
+bai WaterpressureMeasureCounter = 105
+  bai WaterpressureMeasureCounter ('=105',)
+
+bai WaterpressureVariantSum = 65440
+  bai WaterpressureVariantSum ("pressm2='65440 mbar'",)
+
+bai WPPostrunTime = 5
+  bai WPPostrunTime ("minutes0='5 min'",)
+
+bai WPSecondStage = on
+  bai WPSecondStage ("onoff='on'",)
+
+cc currenterror = -;-;-;-;-
+  cc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
+
+cc DateTime = valid;20:57:48;30.01.2020;2.500
+  cc DateTime ("dcfstate='valid'", 'btime=Time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5 °C'", 'bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 57, 48)')
+
+cc DateTime = valid;20:57:48
+  cc DateTime ("dcfstate='valid'", 'btime=Time(20, 57, 48)', 'bdate=NA', 'temp2=NA', 'bdate+btime+dcfstate=NA')
+
+cc Params = 30;6;22;15;75
+  cc Params ("temp0='30 °C'", 'mctype7=6', "temps.0='22 °C'", "temps.1='15 °C'", "temps.2='75 °C'")
+
+cc Stat15MinBusTimeout = 0
+  cc Stat15MinBusTimeout ('=0',)
+
+cc StatMonthOfInstallation = 3
+  cc StatMonthOfInstallation ('=3',)
+
+cc StatOperatingHours = 16610
+  cc StatOperatingHours ('=16610',)
+
+cc StatPowerOn = 31
+  cc StatPowerOn ('=31',)
+
+mc.5 Status = 0;off;30.94;23
+  mc.5 Status ("temp0.0='0 °C'", "onoff='off'", "temp='30.94 °C'", "temp0.1='23 °C'")
+
+cc StatRestarts = 0
+  cc StatRestarts ('=0',)
+
+cc StatRTOSErrorcode = 0
+  cc StatRTOSErrorcode ('=0',)
+
+cc StatRTOSErrorCounter = 0
+  cc StatRTOSErrorCounter ('=0',)
+
+cc Status0a = -;off;on;on;0
+  cc Status0a ('temp=None', "mixer='off'", "onoff.0='on'", "onoff.1='on'", "temp0='0 °C'")
+
+cc Status16 = 2.50
+  cc Status16 ("temp='2.5 °C'",)
+
+cc Status = 0;off;-;0
+  cc Status ("temp0.0='0 °C'", "onoff='off'", 'temp=None', "temp0.1='0 °C'")
+
+cc StatYearOfInstallation = 18
+  cc StatYearOfInstallation ('=18',)
+
+cc Timer.Friday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Friday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+cc Timer.Monday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Monday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+cc Timer.Saturday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Saturday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+cc Timer.Sunday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Sunday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+cc Timer.Thursday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Thursday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+cc Timer.Tuesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Tuesday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+cc Timer.Wednesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Wednesday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+
+qhc BoilerCircuitDisabled = yes
+  UnknownMsgError('circuit=qhc, name=BoilerCircuitDisabled')
+
+hc CleaningLady = 0
+  hc CleaningLady ('=0',)
+
+hc FlowTempDesired = 0.0
+  hc FlowTempDesired ("temp1='0.0 °C'",)
+
+hc FlowTempMax = 90
+  hc FlowTempMax ("temp0='90 °C'",)
+
+hc FlowTempMin 15
+  hc FlowTempMin ("temp0='15 °C'",)
+
+hc FlowTempMin
+  ValueError('hc FlowTempMin')
+
+hc Hc1PumpPort = off
+  hc Hc1PumpPort ("onoff='off'",)
+
+mc.4 Status = 0;off;36.62;24
+  mc.4 Status ("temp0.0='0 °C'", "onoff='off'", "temp='36.62 °C'", "temp0.1='24 °C'")
+
+hc FlowTempMax no data stored
+  hc FlowTempMax ('temp0=NA',)

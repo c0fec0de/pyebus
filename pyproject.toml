@@ -1,0 +1,146 @@
+[tool.poetry]
+name = "pyebus"
+version = "1.0.0"
+description = "Pythonic Interface to EBUS Daemon (ebusd)"
+authors = [
+  "c0fec0de <c0fec0de@gmail.com>"
+]
+readme = "README.rst"
+
+license = "MIT"
+
+homepage = "https://github.com/c0fec0de/pyebus"
+repository = "https://github.com/c0fec0de/pyebus"
+
+keywords = [
+  'EBUSD',
+  'EBUS',
+  'Dungs',
+  'FH Ostfalia',
+  'TEM',
+  'Lamberti',
+  'CEB',
+  'Landis-Staefa',
+  'FERRO',
+  'MONDIAL',
+  'Wikon',
+  'Wolf',
+  'RAWE',
+  'Satronic',
+  'ENCON',
+  'Kromschröder',
+  'Eberle',
+  'EBV',
+  'Grässlin',
+  'ebm-papst',
+  'SIG',
+  'Theben',
+  'Thermowatt',
+  'Vaillant',
+  'Toby',
+  'Weishaupt',
+  'ebusd.eu',
+  'Heating'
+]
+
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.8",
+]
+
+
+[tool.poetry.scripts]
+ebt = "pyebus.cli:main"
+
+[tool.poetry.dependencies]
+python = ">= 3.7, < 4"
+anytree = "^2.8.0"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+coverage = {extras = ["toml"], version = "^5.3.1"}
+coveralls = "^2.2.0"
+importlib-metadata = {version = "^1.0", python = "<3.8"}
+isort = "^5.7.0"
+pylint = "^2.6.0"
+pytest = "^5.2"
+Sphinx = "^3.4.2"
+readme-renderer = "^28.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.doctest]
+doctest-module = true
+
+[tool.coverage.run]
+branch = true
+omit = [".tox/*", "tests/*", ".cache/*", "pyebus/cli/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "return NotImplemented",
+    "raise NotImplementedError",
+    "if __name__ == __main__:",
+]
+
+[tool.black]
+line-length = 119
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.mypy_cache
+  | \.tox
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 120
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length = 120
+disable = [
+  "R0801",
+  "R0903",
+  "R0913",
+  "R1705",
+  "W0223",
+  "W0511",
+  "W1203",
+]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = true
+envlist = py
+
+[testenv]
+whitelist_externals = poetry
+commands =
+    poetry install -v
+    poetry run isort . --check
+    poetry run black . --check
+    poetry run coverage erase
+    poetry run coverage run -m pytest --doctest-modules --log-level=DEBUG -vv
+    poetry run coverage report
+    poetry run coverage html
+    poetry run pylint pyebus
+    poetry run make api -C docs
+    poetry run make html -C docs
+    poetry run python -m readme_renderer README.rst -o docs/_build/readme.html
+"""

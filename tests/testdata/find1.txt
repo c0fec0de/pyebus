@@ -1,0 +1,636 @@
+r,b7v,AdaptHeatCurve,,s,IGN:4,,,,yesno,s,UCH,0=no;1=yes,,automatic correction of configured heat curve
+w,b7v,AdaptHeatCurve,yesno,m,UCH,0=no;1=yes,,automatic correction of configured heat curve
+r,b7v,BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays
+w,b7v,BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays
+r,b7v,BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays
+w,b7v,BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays
+r,b7v,ccTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ccTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ccTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ccTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ccTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ccTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ccTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ccTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+w,b7v,clearerrorhistory,cleared,s,UCH,0=no;1=yes,,
+r,b7v,ContinuosHeating,,s,IGN:4,,,,tempv,s,EXP,,°C,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
+w,b7v,ContinuosHeating,tempv,m,EXP,,°C,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
+r,b7v,currenterror,error,s,UIN,,,error number,error,s,UIN,,,error number,error,s,UIN,,,error number,error,s,UIN,,,error number,error,s,UIN,,,error number
+r,b7v,CylinderChargeHyst,,s,IGN:4,,,,calibrationv,s,EXP,,K,Hysterese Speicherladung
+w,b7v,CylinderChargeHyst,calibrationv,m,EXP,,K,Hysterese Speicherladung
+r,b7v,CylinderChargeOffset,,s,IGN:4,,,,calibrationv,s,EXP,,K,Speicherlad. Offset
+w,b7v,CylinderChargeOffset,calibrationv,m,EXP,,K,Speicherlad. Offset
+r,b7v,Date,,s,IGN:4,,,,date,s,HDA,,,Aktuelles Datum
+w,b7v,Date,date,m,HDA,,,Aktuelles Datum
+r,b7v,DisplayedOutsideTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Außentemperatur
+r,b7v,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,time,date,s,HDA,,,date,error,s,UIN,,,error number
+r,b7v,FrostOverRideTime,,s,IGN:4,,,,hoursum2,s,UIN,,h,delay before frost protection is activated
+w,b7v,FrostOverRideTime,hoursum2,m,UIN,,h,delay before frost protection is activated
+r1,b7v,Hc1ActualFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature setpoint of Hc1
+r,b7v,Hc1AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat
+w,b7v,Hc1AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat
+r,b7v,Hc1CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
+r,b7v,Hc1ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
+w,b7v,Hc1ExcessTemp,calibrationv,m,EXP,,K,excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
+r,b7v,Hc1FlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature of Hc1
+r2,b7v,Hc1HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc1
+w,b7v,Hc1HeatCurve,,m,EXP,,,heating curve of Hc1
+r,b7v,Hc1HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc1
+r,b7v,Hc1MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc1
+w,b7v,Hc1MaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc1
+r,b7v,Hc1MinFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc1
+w,b7v,Hc1MinFlowTempDesired,tempv,m,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc1
+r,b7v,Hc1MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
+r,b7v,Hc1PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 1
+w,b7v,Hc1PumpStatus,,m,UIN,,,pump status of zone 1
+r2,b7v,Hc1RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc1
+w,b7v,Hc1RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc1
+r2,b7v,Hc1Status,,s,IGN:4,,,,,s,UCH,,,status of zone 1
+w,b7v,Hc1Status,,m,UCH,,,status of zone 1
+r,b7v,Hc1SummerTempLimit,,s,IGN:4,,,,tempv,s,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
+w,b7v,Hc1SummerTempLimit,tempv,m,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
+r,b7v,Hc2ActualFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature setpoint of Hc2
+r,b7v,Hc2AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat
+w,b7v,Hc2AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat
+r,b7v,Hc2CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
+r,b7v,Hc2ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc2 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
+w,b7v,Hc2ExcessTemp,calibrationv,m,EXP,,K,excess temperature of Hc2 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
+r,b7v,Hc2FlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature of Hc2
+r,b7v,Hc2HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc2
+w,b7v,Hc2HeatCurve,,m,EXP,,,heating curve of Hc2
+r,b7v,Hc2HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc2
+r,b7v,Hc2MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc2
+w,b7v,Hc2MaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc2
+r,b7v,Hc2MinFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc2
+w,b7v,Hc2MinFlowTempDesired,tempv,m,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc2
+r,b7v,Hc2MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
+r,b7v,Hc2PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 2
+w,b7v,Hc2PumpStatus,,m,UIN,,,pump status of zone 2
+r,b7v,Hc2RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc2
+w,b7v,Hc2RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc2
+r,b7v,Hc2Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
+w,b7v,Hc2Status,,m,UCH,,,status of zone 2
+r,b7v,Hc2SummerTempLimit,,s,IGN:4,,,,tempv,s,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
+w,b7v,Hc2SummerTempLimit,tempv,m,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
+r,b7v,Hc3ActualFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature setpoint of Hc3
+r,b7v,Hc3AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat
+w,b7v,Hc3AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat
+r,b7v,Hc3CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
+r,b7v,Hc3ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc3 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
+w,b7v,Hc3ExcessTemp,calibrationv,m,EXP,,K,excess temperature of Hc3 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
+r,b7v,Hc3FlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature of Hc3
+r,b7v,Hc3HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc3
+w,b7v,Hc3HeatCurve,,m,EXP,,,heating curve of Hc3
+r,b7v,Hc3HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc3
+r,b7v,Hc3MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc3
+w,b7v,Hc3MaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc3
+r,b7v,Hc3MinFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc3
+w,b7v,Hc3MinFlowTempDesired,tempv,m,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc3
+r,b7v,Hc3MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
+r,b7v,Hc3PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 3
+w,b7v,Hc3PumpStatus,,m,UIN,,,pump status of zone 3
+r,b7v,Hc3RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc3
+w,b7v,Hc3RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc3
+r,b7v,Hc3Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
+w,b7v,Hc3Status,,m,UCH,,,status of zone 2
+r,b7v,Hc3SummerTempLimit,,s,IGN:4,,,,tempv,s,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
+w,b7v,Hc3SummerTempLimit,tempv,m,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
+r,b7v,HcStorageTempBottom,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler Hz, unten"
+r,b7v,HcStorageTempTop,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler Hz, oben"
+r,b7v,HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays
+w,b7v,HolidayEndPeriod,hto,m,HDA,,,end date of holidays
+r,b7v,HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays
+w,b7v,HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays
+r,b7v,HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint
+w,b7v,HolidayTemp,tempv,m,EXP,,°C,holiday setpoint
+r,b7v,HwcBankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays
+w,b7v,HwcBankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays
+r,b7v,HwcBankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays
+w,b7v,HwcBankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays
+r,b7v,HwcFlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,desired flow temp for Hwc
+r,b7v,HwcHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays
+w,b7v,HwcHolidayEndPeriod,hto,m,HDA,,,end date of holidays
+r,b7v,HwcHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays
+w,b7v,HwcHolidayStartPeriod,hfrom,m,HDA,,,start date of holidays
+r,b7v,HwcLockTime,,s,IGN:4,,,,minutes2,s,UIN,,min,Sperrzeit WW-Bedarf
+w,b7v,HwcLockTime,minutes2,m,UIN,,min,Sperrzeit WW-Bedarf
+r,b7v,HwcMaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint of Hwc
+w,b7v,HwcMaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint of Hwc
+r2,b7v,HwcOpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of Hwc
+w,b7v,HwcOpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of Hwc
+r,b7v,HwcParallelLoading,,s,IGN:4,,,,onoff,s,UCH,0=off;1=on,,heating and hot water parallel
+w,b7v,HwcParallelLoading,onoff,m,UCH,0=off;1=on,,heating and hot water parallel
+r,b7v,HwcSFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+w,b7v,HwcSFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+r1,b7v,HwcStorageTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Speicheristtemperatur
+r,b7v,HwcStorageTempBottom,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler WW, unten"
+r,b7v,HwcStorageTempTop,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler WW, oben"
+r2,b7v,HwcTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,setpoint of domestic hot water circuit
+w,b7v,HwcTempDesired,tempv,m,EXP,,°C,setpoint of domestic hot water circuit
+r,b7v,hwcTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,hwcTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,hwcTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,hwcTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,hwcTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,hwcTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,hwcTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,hwcTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,HydraulicScheme,,s,IGN:4,,,,,s,UIN,,,Systemschema
+w,b7v,HydraulicScheme,,m,UIN,,,Systemschema
+r,b7v,Installer1,,s,IGN:4,,,,shortname,s,STR:6,,,installer's name
+w,b7v,Installer1,shortname,m,STR:6,,,installer's name
+r,b7v,Installer2,,s,IGN:4,,,,shortname,s,STR:6,,,installer's name
+w,b7v,Installer2,shortname,m,STR:6,,,installer's name
+r,b7v,KeyCodeforConfigMenu,,s,IGN:4,,,,,s,UIN,,,000-999; code for the installer's menues
+w,b7v,KeyCodeforConfigMenu,,m,UIN,,,000-999; code for the installer's menues
+r,b7v,MaintenanceDate,,s,IGN:4,,,,date,s,HDA,,,Datum nächste Wartung
+w,b7v,MaintenanceDate,date,m,HDA,,,Datum nächste Wartung
+r,b7v,MaintenanceDue,,s,IGN:4,,,,yesno,s,UCH,0=no;1=yes,,zeigt an ob die Wartung fällig ist
+r,b7v,MaxCylinderChargeTime,,s,IGN:4,,,,minutes2,s,UIN,,min,maximum cylinder charging time
+w,b7v,MaxCylinderChargeTime,minutes2,m,UIN,,min,maximum cylinder charging time
+r,b7v,MaxRoomHumidity,,s,IGN:4,,,,,s,UIN,,,maximum room humidity
+w,b7v,MaxRoomHumidity,,m,UIN,,,maximum room humidity
+r,b7v,MultiRelaySetting,,s,IGN:4,,,,mamode,s,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
+w,b7v,MultiRelaySetting,mamode,m,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
+r,b7v,noiseReductionTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,noiseReductionTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,noiseReductionTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,noiseReductionTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,noiseReductionTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,noiseReductionTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,noiseReductionTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,noiseReductionTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of all/configured zone(s) matching OpModeEffect
+w,b7v,OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of all/configured zone(s) matching OpModeEffect
+r,b7v,OpModeEffect,,s,IGN:4,,,,zonesel,s,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selection which heating circuit is affected by changing parameters in the basic display
+w,b7v,OpModeEffect,zonesel,m,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selection which heating circuit is affected by changing parameters in the basic display
+r,b7v,OutsideTempAvg,,s,IGN:4,,,,tempv,s,EXP,,°C,gerundete mittlere Außentemperatur (alle 3h aktualisiert)
+w,b7v,OutsideTempAvg,tempv,m,EXP,,°C,gerundete mittlere Außentemperatur (alle 3h aktualisiert)
+r,b7v,PhoneNumber1,,s,IGN:4,,,,shortphone,s,STR:6,,,installer's telephone number
+w,b7v,PhoneNumber1,shortphone,m,STR:6,,,installer's telephone number
+r,b7v,PhoneNumber2,,s,IGN:4,,,,shortphone,s,STR:6,,,installer's telephone number
+w,b7v,PhoneNumber2,shortphone,m,STR:6,,,installer's telephone number
+r,b7v,PrEnergySum,,s,IGN:4,,,,energy4,s,ULG,,kWh,Dieses Jahr Stromverbrauch gesamt
+w,b7v,PrEnergySum,energy4,m,ULG,,kWh,Dieses Jahr Stromverbrauch gesamt
+r,b7v,PrEnergySumHc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Stromverbrauch Heizung gesamt
+w,b7v,PrEnergySumHc,energy4,m,ULG,,kWh,Stromverbrauch Heizung gesamt
+r,b7v,PrEnergySumHcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Stromverbrauch Heizung
+w,b7v,PrEnergySumHcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Stromverbrauch Heizung
+r,b7v,PrEnergySumHcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Stromverbrauch Heizung
+w,b7v,PrEnergySumHcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Stromverbrauch Heizung
+r,b7v,PrEnergySumHwc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Stromverbrauch hot water gesamt
+w,b7v,PrEnergySumHwc,energy4,m,ULG,,kWh,Stromverbrauch hot water gesamt
+r,b7v,PrEnergySumHwcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Stromverbrauch hot water
+w,b7v,PrEnergySumHwcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Stromverbrauch hot water
+r,b7v,PrEnergySumHwcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Stromverbrauch hot water
+w,b7v,PrEnergySumHwcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Stromverbrauch hot water
+r,b7v,PrFuelSum,,s,IGN:4,,,,energy4,s,ULG,,kWh,Dieses Jahr Brennstoffverbrauch gesamt
+w,b7v,PrFuelSum,energy4,m,ULG,,kWh,Dieses Jahr Brennstoffverbrauch gesamt
+r,b7v,PrFuelSumHc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Brennstoffverbrauch Heizung gesamt
+w,b7v,PrFuelSumHc,energy4,m,ULG,,kWh,Brennstoffverbrauch Heizung gesamt
+r,b7v,PrFuelSumHcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Brennstoffverbrauch Heizung
+w,b7v,PrFuelSumHcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Brennstoffverbrauch Heizung
+r,b7v,PrFuelSumHcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Brennstoffverbrauch Heizung
+w,b7v,PrFuelSumHcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Brennstoffverbrauch Heizung
+r,b7v,PrFuelSumHwc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Brennstoffverbrauch hot water gesamt
+w,b7v,PrFuelSumHwc,energy4,m,ULG,,kWh,Brennstoffverbrauch hot water gesamt
+r,b7v,PrFuelSumHwcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Brennstoffverbrauch hot water
+w,b7v,PrFuelSumHwcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Brennstoffverbrauch hot water
+r,b7v,PrFuelSumHwcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Brennstoffverbrauch hot water
+w,b7v,PrFuelSumHwcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Brennstoffverbrauch hot water
+r,b7v,PumpAdditionalTime,,s,IGN:4,,,,minutes2,s,UIN,,min,Ladepumpe Nachlaufzeit
+w,b7v,PumpAdditionalTime,minutes2,m,UIN,,min,Ladepumpe Nachlaufzeit
+r,b7v,SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+w,b7v,SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+r,b7v,SolarYieldTotal,,s,IGN:4,,,,energy4,s,ULG,,kWh,Solarertrag gesamt
+w,b7v,SolarYieldTotal,energy4,m,ULG,,kWh,Solarertrag gesamt
+r,b7v,SystemFlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Systemvorlauf
+r,b7v,tariffTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,tariffTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,tariffTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,tariffTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,tariffTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,tariffTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,tariffTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,tariffTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,Time,,s,IGN:4,,,,,s,HTI,,,Aktuelle Uhrzeit
+w,b7v,Time,,m,HTI,,,Aktuelle Uhrzeit
+r,b7v,ventilationTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ventilationTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ventilationTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ventilationTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ventilationTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ventilationTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,ventilationTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,ventilationTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,WaterPressure,,s,IGN:4,,,,pressv,s,EXP,,bar,Wasserdruck
+r,b7v,YieldTotal,,s,IGN:4,,,,energy4,s,ULG,,kWh,Umweltertrag gesamt
+w,b7v,YieldTotal,energy4,m,ULG,,kWh,Umweltertrag gesamt
+r2,b7v,z1ActualRoomTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
+w,b7v,z1ActualRoomTempDesired,tempv,m,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
+r,b7v,z1BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays for zone 1
+w,b7v,z1BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays for zone 1
+r,b7v,z1BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays for zone 1
+w,b7v,z1BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays for zone 1
+r,b7v,z1CoolingTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,desired cooling setpoint for zone 1
+w,b7v,z1CoolingTemp,tempv,m,EXP,,°C,desired cooling setpoint for zone 1
+r,b7v,z1CoolingTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1CoolingTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1CoolingTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1CoolingTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1CoolingTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1CoolingTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1CoolingTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1CoolingTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r2,b7v,z1DayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,day setpoint for zone 1
+w,b7v,z1DayTemp,tempv,m,EXP,,°C,day setpoint for zone 1
+r,b7v,z1HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays for zone 1
+w,b7v,z1HolidayEndPeriod,hto,m,HDA,,,end date of holidays for zone 1
+r,b7v,z1HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays for zone 1
+w,b7v,z1HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays for zone 1
+r,b7v,z1HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint for zone 1
+w,b7v,z1HolidayTemp,tempv,m,EXP,,°C,holiday setpoint for zone 1
+r,b7v,z1Name1,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 1
+w,b7v,z1Name1,zname,m,STR:5,,,name of zone 1
+r,b7v,z1Name2,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 1
+w,b7v,z1Name2,zname,m,STR:5,,,name of zone 1
+r2,b7v,z1NightTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,night setpoint for zone 1
+w,b7v,z1NightTemp,tempv,m,EXP,,°C,night setpoint for zone 1
+r,b7v,z1OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 1
+w,b7v,z1OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 1
+r,b7v,z1QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 1
+w,b7v,z1QuickVetoTemp,tempv,m,EXP,,°C,manual override setpoint for zone 1
+r1,b7v,z1RoomTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current room temperature in zone 1
+r,b7v,z1RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 1
+w,b7v,z1RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 1
+r,b7v,z1SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+w,b7v,z1SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+r,b7v,z1Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 1
+w,b7v,z1Shortname,shortname,m,STR:6,,,short name of zone 1
+r,b7v,z1Timer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1Timer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1Timer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1Timer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1Timer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1Timer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1Timer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z1Timer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z1ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 1
+w,b7v,z1ValveStatus,,m,UCH,,,valve status of zone 1
+r,b7v,z2ActualRoomTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
+w,b7v,z2ActualRoomTempDesired,tempv,m,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
+r,b7v,z2BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays for zone 2
+w,b7v,z2BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays for zone 2
+r,b7v,z2BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays for zone 2
+w,b7v,z2BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays for zone 2
+r,b7v,z2CoolingTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,desired cooling setpoint for zone 2
+w,b7v,z2CoolingTemp,tempv,m,EXP,,°C,desired cooling setpoint for zone 2
+r,b7v,z2CoolingTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2CoolingTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2CoolingTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2CoolingTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2CoolingTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2CoolingTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2CoolingTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2CoolingTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2DayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,day setpoint for zone 2
+w,b7v,z2DayTemp,tempv,m,EXP,,°C,day setpoint for zone 2
+r,b7v,z2HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays for zone 2
+w,b7v,z2HolidayEndPeriod,hto,m,HDA,,,end date of holidays for zone 2
+r,b7v,z2HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays for zone 2
+w,b7v,z2HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays for zone 2
+r,b7v,z2HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint for zone 2
+w,b7v,z2HolidayTemp,tempv,m,EXP,,°C,holiday setpoint for zone 2
+r,b7v,z2Name1,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 2
+w,b7v,z2Name1,zname,m,STR:5,,,name of zone 2
+r,b7v,z2Name2,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 2
+w,b7v,z2Name2,zname,m,STR:5,,,name of zone 2
+r,b7v,z2NightTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,night setpoint for zone 2
+w,b7v,z2NightTemp,tempv,m,EXP,,°C,night setpoint for zone 2
+r,b7v,z2OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 2
+w,b7v,z2OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 2
+r,b7v,z2QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 2
+w,b7v,z2QuickVetoTemp,tempv,m,EXP,,°C,manual override setpoint for zone 2
+r,b7v,z2RoomTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current room temperature in zone 2
+r,b7v,z2RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 2
+w,b7v,z2RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 2
+r,b7v,z2SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+w,b7v,z2SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+r,b7v,z2Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 2
+w,b7v,z2Shortname,shortname,m,STR:6,,,short name of zone 2
+r,b7v,z2Timer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2Timer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2Timer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2Timer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2Timer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2Timer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2Timer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
+w,b7v,z2Timer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
+r,b7v,z2ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 2
+w,b7v,z2ValveStatus,,m,UCH,,,valve status of zone 2
+r,b7v,z3ActualRoomTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
+w,b7v,z3ActualRoomTempDesired,tempv,m,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
+r,b7v,z3BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays for zone 3
+w,b7v,z3BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays for zone 3
+r,b7v,z3BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays for zone 3
+w,b7v,z3BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays for zone 3
+r,b7v,z3DayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,day setpoint for zone 3
+w,b7v,z3DayTemp,tempv,m,EXP,,°C,day setpoint for zone 3
+r,b7v,z3HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays for zone 3
+w,b7v,z3HolidayEndPeriod,hto,m,HDA,,,end date of holidays for zone 3
+r,b7v,z3HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays for zone 3
+w,b7v,z3HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays for zone 3
+r,b7v,z3HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint for zone 3
+w,b7v,z3HolidayTemp,tempv,m,EXP,,°C,holiday setpoint for zone 3
+r,b7v,z3Name1,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 3
+w,b7v,z3Name1,zname,m,STR:5,,,name of zone 3
+r,b7v,z3Name2,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 3
+w,b7v,z3Name2,zname,m,STR:5,,,name of zone 3
+r,b7v,z3NightTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,night setpoint for zone 3
+w,b7v,z3NightTemp,tempv,m,EXP,,°C,night setpoint for zone 3
+r,b7v,z3OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 3
+w,b7v,z3OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 3
+r,b7v,z3QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 3
+w,b7v,z3QuickVetoTemp,tempv,m,EXP,,°C,manual override setpoint for zone 3
+r,b7v,z3RoomTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current room temperature in zone 3
+r,b7v,z3RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 3
+w,b7v,z3RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 3
+r,b7v,z3SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+w,b7v,z3SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
+r,b7v,z3Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 3
+w,b7v,z3Shortname,shortname,m,STR:6,,,short name of zone 3
+r,b7v,z3ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 3
+w,b7v,z3ValveStatus,,m,UCH,,,valve status of zone 3
+r,bai,AccessoriesOne,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 1
+w,bai,AccessoriesOne,,m,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 1
+r,bai,AccessoriesTwo,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 2
+w,bai,AccessoriesTwo,,m,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 2
+r,bai,ACRoomthermostat,onoff,s,UCH,0=off;1=on,,External controls heat demand (Clamp 3-4)
+r,bai,AntiCondensValue,,s,UCH,,kW / %,Minimal power to avoid condensation
+w,bai,AntiCondensValue,,m,UCH,,kW / %,Minimal power to avoid condensation
+[SW>=413]r,bai,APCComStatus,,s,UCH,,,actoSTORE communication status
+[SW>=413]r,bai,APCLegioProtection,,s,UCH,,,Legionella protection for internal storage
+[SW>=413]w,bai,APCLegioProtection,,m,UCH,,,Legionella protection for internal storage
+r,bai,averageIgnitiontime,,s,UCH,10,s,Average ignition time
+r,bai,BlockTimeHcMax,minutes0,s,UCH,,min,Maximum burner anti cycling period at 20°C flow temperature set point
+w,bai,BlockTimeHcMax,minutes0,m,UCH,,min,Maximum burner anti cycling period at 20°C flow temperature set point
+r,bai,BoilerType,,s,UCH,,,Boiler typ of the BMU
+r,bai,ChangesDSN,,s,UCH,,,Numbers adjusting (storing) the DSN
+r1,bai,CirPump,onoff,s,UCH,0=off;1=on,,Hot water circulation pump (via external module)
+w,bai,clearerrorhistory,cleared,s,UCH,0=no;1=yes,,
+r,bai,CodingResistor,,s,HEX:3,,,boiler identification resistor
+r,bai,CounterStartattempts1,temp0,s,UCH,,°C,Number of unsuccessful ignition attempts (in the first attempt)
+r,bai,CounterStartattempts2,temp0,s,UCH,,°C,Number of unsuccessful ignition attempts (in the second attempt)
+r,bai,CounterStartAttempts3,temp0,s,UCH,,°C,Number of unsuccessful ignition attempts (in the 3rd attempt)
+r,bai,CounterStartAttempts4,temp0,s,UCH,,°C,Number of unsuccessful ignition attempts (in the 4th attempt)
+r,bai,currenterror,error,s,UIN,,,error number,error,s,UIN,,,error number,error,s,UIN,,,error number,error,s,UIN,,,error number,error,s,UIN,,,error number
+r,bai,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF receiver state,btime,s,BTI,,,time,bdate,s,BDA,,,date,temp2,s,D2B,,°C,temperature
+r,bai,dcfState,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Status
+r,bai,DCFTimeDate,,s,VTI,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;,,s,HDA,,,
+r,bai,DCRoomthermostat,onoff,s,UCH,0=off;1=on,,xternal controls heat demand (Clamp 3-4)
+r,bai,DeactivationsIFC,,s,UCH,,,Number of ignition failures (unsuccessful last-run or faulty flame signal)
+r,bai,DeactivationsTemplimiter,,s,UCH,,,Number of shutdowns by the safety temperature limiter
+r,bai,DeltaFlowReturnMax,temp,s,D2C,,°C,Maintenance data
+r,bai,DisplayMode,,s,UCH,,,Display mode of the appliance
+r,bai,DSN,,s,UIN,,,DSN: Device Specific number
+r,bai,DSNOffset,,s,UCH,,,Hardware ID (DSN)
+w,bai,DSNOffset,,m,UCH,,,Hardware ID (DSN)
+r,bai,DSNStart,,s,UIN,,,DSN starting address
+r,bai,EBusHeatcontrol,yesno,s,UCH,0=no;1=yes,,Digital regulator status
+r,bai,EbusSourceOn,onoff,s,UCH,0=off;1=on,,Activation signal of the eBus source
+r,bai,EbusVoltage,onoff,s,UCH,0=off;1=on,,eBUS voltage feedback
+r,bai,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,time,date,s,HDA,,,date,error,s,UIN,,,error number
+r,bai,ExternalFaultmessage,onoff,s,UCH,0=off;1=on,,External fault message
+r,bai,externalHwcSwitch,onoff,s,UCH,0=off;1=on,,Demand external HWC tank (via contact)
+r,bai,ExternGasvalve,onoff,s,UCH,0=off;1=on,,External solenoid valve
+r,bai,ExtFlowTempDesiredMin,temp,s,D2C,,°C,minimum out of Kl.7 and eBus flow setpoint
+r,bai,ExtStorageModulCon,yesno,s,UCH,0=no;1=yes,,External memory module (VR65) connected
+r1,bai,extWP,onoff,s,UCH,0=off;1=on,,External central heating pump
+r,bai,FanHours,hoursum2,s,UIN,,h,Operating hours of the fan
+r,bai,FanMaxSpeedOperation,,s,UIN,,1/min,Fan maximum speed
+r,bai,FanMinSpeedOperation,,s,UIN,,1/min,Fan minimum speed
+r,bai,FanPWMSum,,s,UIN,,,Predictive Maintenance data for the fan damage recognition
+r,bai,FanPWMTest,,s,UCH,,,Predictive Maintenance data for the fan damage recognition
+r,bai,FanSpeed,,s,UIN,,1/min,Current fan speed
+r,bai,FanSpeedOffsetMax,,s,SIN,,1/min,Fan maximum speed offset
+w,bai,FanSpeedOffsetMax,,m,SIN,,1/min,Fan maximum speed offset
+r,bai,FanSpeedOffsetMin,,s,SIN,,1/min,Fan minimum speed offset
+w,bai,FanSpeedOffsetMin,,m,SIN,,1/min,Fan minimum speed offset
+r,bai,FanStarts,cntstarts2,s,UIN,,,Number of times fan switched on
+r1,bai,Flame,,s,UCH,15=on;240=off,,Flame
+r,bai,FlameSensingASIC,,s,UIN,,,ioni/adc value from the flame control circuit
+r,bai,FloorHeatingContact,onoff,s,UCH,0=off;1=on,,Floor heating contact
+r,bai,FlowsetHcMax,temp,s,D2C,,°C,Setting the maximum flow setpoint in heating mode (with left-hand stop of the potentiometer)
+w,bai,FlowsetHcMax,temp,m,D2C,,°C,Setting the maximum flow setpoint in heating mode (with left-hand stop of the potentiometer)
+r,bai,FlowsetHwcMax,temp,s,D2C,,°C,storage charging temperature limit (target flow temperature in storage mode)
+w,bai,FlowsetHwcMax,temp,m,D2C,,°C,storage charging temperature limit (target flow temperature in storage mode)
+r1,bai,FlowTemp,temp,s,D2C,,°C,CH supply temperature sensor (VF2),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r9,bai,FlowTempDesired,temp,s,D2C,,°C,Flow temperature target value or return target value when return regulation is set
+r,bai,FlowTempMax,temp,s,D2C,,°C,Maximum CH flow temperature
+r,bai,Fluegasvalve,onoff,s,UCH,0=off;1=on,,Feedback from the flue gas valve
+r,bai,FluegasvalveOpen,onoff,s,UCH,0=off;1=on,,Exhaust (flue) flap open
+r,bai,Gasvalve3UC,,s,UCH,15=on;240=off,,Gas valve switching signal (from the processor)
+r,bai,GasvalveASICFeedback,,s,UCH,15=on;240=off,,Gas valve feedback (from ASIC)
+r,bai,GasvalveUC,,s,UCH,15=on;240=off,,Activation signal of the gasvalve (activated via micrcontroller)
+r,bai,GasvalveUCFeedback,,s,UCH,15=on;240=off,,Gas valve feedback (from micro controller)
+r,bai,HcHours,hoursum2,s,UIN,,h,Hours of operation in heating mode
+r,bai,HcPumpMode,,s,UCH,0=post run;1=permanent;2=winter,,Pump mode for central heating
+w,bai,HcPumpMode,,m,UCH,0=post run;1=permanent;2=winter,,Pump mode for central heating
+r,bai,HcPumpStarts,cntstarts2,s,UIN,,,Pump times switched on
+r,bai,HcStarts,,s,UIN,-100,,Number of CH mode starts
+r,bai,HcUnderHundredStarts,,s,UCH,,,Heat switch cycles under hundred
+r,bai,HeatingSwitch,onoff,s,UCH,0=off;1=on,,Central heating on/off switch
+w,bai,HeatingSwitch,onoff,m,UCH,0=off;1=on,,Central heating on/off switch
+r,bai,HoursTillService,hoursum2,s,UIN,,h,Hours left before service is needed
+w,bai,HoursTillService,hoursum2,m,UIN,,h,Hours left before service is needed
+r,bai,HwcDemand,yesno,s,UCH,0=no;1=yes,,Domestic hot water demand
+r,bai,HwcHours,hoursum2,s,UIN,,h,Hours of DHW operation
+r,bai,HwcImpellorSwitch,yesno,s,UCH,0=no;1=yes,,DHW demand from impeller switch
+r,bai,HwcPostrunTime,,s,UCH,-10,s,"Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)"
+w,bai,HwcPostrunTime,,m,UCH,-10,s,"Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)"
+r,bai,HwcStarts,,s,UIN,-100,,Number of DHW mode starts
+r,bai,HwcSwitch,onoff,s,UCH,0=off;1=on,,Domestic hot water switch
+w,bai,HwcSwitch,onoff,m,UCH,0=off;1=on,,Domestic hot water switch
+r,bai,HwcTemp,temp,s,D2C,,°C,Hot water flow temperature,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r,bai,HwcTempDesired,temp,s,D2C,,°C,Hot water temperature target value
+r,bai,HwcTempMax,temp,s,D2C,,°C,Max. Speichersollwert. Limits the maximum adjustment range of the potentiometer (right stop).
+w,bai,HwcTempMax,temp,m,D2C,,°C,Max. Speichersollwert. Limits the maximum adjustment range of the potentiometer (right stop).
+r,bai,HwcTypes,,s,UCH,,,DHW type of the appliance
+r,bai,HwcUnderHundredStarts,,s,UCH,,,DHW switch cycles under hundred
+r,bai,HwcWaterflow,uin100,s,UIN,100,,domestic hot water flow sensor
+r,bai,HwcWaterflowMax,uin100,s,UIN,100,,Maximalwert des Warmwassersensors
+r,bai,Ignitor,,s,UCH,15=on;240=off,,Ignition status
+r,bai,InitialisationEEPROM,yesno,s,UCH,0=no;1=yes,,EEPROM initialization (for production)
+r,bai,IonisationVoltageLevel,,s,SIN,10,,Digital ionisation voltage (80 = no flame; 40 = good flame)
+r,bai,maintenancedata_HwcTempMax,temp,s,D2C,,°C,Maximum temperature measured at the tap water outlet sensor
+r,bai,maxIgnitiontime,,s,UCH,10,s,Maximum ignition time
+r,bai,minIgnitiontime,,s,UCH,10,s,Minimum ignition time
+r1,bai,ModulationTempDesired,,s,SIN,10,%,Modulation set point
+r,bai,OptionalRelais,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of optional relay
+w,bai,OptionalRelais,,m,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of optional relay
+r,bai,OutdoorstempSensor,temp,s,D2C,,°C,Outdoor temperature sensor (uncorrected value) value and status,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r,bai,OverflowCounter,yesno,s,UCH,0=no;1=yes,,Predictive Maintenance counter have got an overflow
+r,bai,ParamToken,,s,UCH,,,Token for parameter managment
+r,bai,PartloadHcKW,power,s,UCH,,kW,Heating part load
+w,bai,PartloadHcKW,power,m,UCH,,kW,Heating part load
+r,bai,PartloadHwcKW,power,s,UCH,,kW,storage part load (storage charging capacity limit)
+w,bai,PartloadHwcKW,power,m,UCH,,kW,storage part load (storage charging capacity limit)
+r,bai,PartnumberBox,,s,HEX:5,,,Part number of the eBox
+r1,bai,PositionValveSet,,s,UCH,,,Position of diverter valve; 100 = DHW; 0 = heating; 40 = middle position
+r,bai,PowerValue,,s,HEX:6,,,Power value of the boiler (minimum and maximum)
+r,bai,PrAPSCounter,,s,UCH,,,Maintenance data
+r,bai,PrAPSSum,seconds2,s,UIN,,s,Maintenance data
+r9,bai,PrEnergyCountHc1,,s,ULG,,,Maintenance data
+r,bai,PrEnergyCountHc2,,s,ULG,,,Wartungsdaten
+r,bai,PrEnergyCountHc3,,s,ULG,,,Maintenance data
+r9,bai,PrEnergyCountHwc1,,s,ULG,,,Maintenance data
+r,bai,PrEnergyCountHwc2,,s,ULG,,,Maintenance data
+r,bai,PrEnergyCountHwc3,,s,ULG,,,Maintenance data
+r9,bai,PrEnergySumHc1,,s,ULG,,,Maintenance data
+r,bai,PrEnergySumHc2,,s,ULG,,,Maintenance data
+r,bai,PrEnergySumHc3,,s,ULG,,,Maintenance data
+r9,bai,PrEnergySumHwc1,,s,ULG,,,Maintenance data
+r,bai,PrEnergySumHwc2,,s,ULG,,,Maintenance data
+r,bai,PrEnergySumHwc3,,s,ULG,,,Maintenance data
+r,bai,ProductionByte,,s,UCH,,,
+r,bai,PrVortexFlowSensorValue,,s,SIN,,ADC,Maintenance data
+r,bai,PumpHours,hoursum2,s,UIN,,h,Pump operating hours
+r,bai,PumpHwcFlowNumber,,s,UCH,,,Number of times DHW flow rate was detected
+r,bai,PumpHwcFlowSum,,s,UIN,,,Summed up DHW flow rate
+r1,bai,PumpPower,,s,UCH,,,Current central heating pump power
+r,bai,PumpPowerDesired,,s,UCH,0=auto;1=53;2=60;3=70;4=85;5=100,%,PWM-Desired central heating pump power
+w,bai,PumpPowerDesired,,m,UCH,0=auto;1=53;2=60;3=70;4=85;5=100,%,PWM-Desired central heating pump power
+r,bai,RemainingBoilerblocktime,minutes0,s,UCH,,min,Remaining burner anti-cycling time
+r,bai,ReturnRegulation,onoff,s,UCH,0=off;1=on,,Activation of the return control
+w,bai,ReturnRegulation,onoff,m,UCH,0=off;1=on,,Activation of the return control
+r1,bai,ReturnTemp,temp,s,D2C,,°C,CH return temperature sensor,tempmirror,s,UIN,,,,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r,bai,ReturnTempExternal,temp,s,D2C,,°C,External return temperature sensor,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r,bai,ReturnTempMax,temp,s,D2C,,°C,Max flow return temperature
+r,bai,SerialNumber,,s,HEX:8,,,Serial number AI
+r,bai,SetFactoryValues,yesno,s,UCH,0=no;1=yes,,Reset to factory defaults
+w,bai,SetFactoryValues,yesno,m,UCH,0=no;1=yes,,Reset to factory defaults
+uw,bai,SetMode,hcmode,m,UCH,0=auto;1=off;2=water,,boiler mode,flowtempdesired,m,D1C,,°C,temperature,hwctempdesired,m,D1C,,°C,temperature,hwcflowtempdesired,m,UCH,,°C,temperature,,m,IGN:1,,,,disablehc,m,BI0:1,,,,disablehwctapping,m,BI1:1,,,,disablehwcload,m,BI2:1,,,,,m,IGN:1,,,,remoteControlHcPump,m,BI0:1,,,,releaseBackup,m,BI1:1,,,,releaseCooling,m,BI2:1,,,
+r,bai,SHEMaxDeltaHwcFlow,temp,s,D2C,,°C,maximum difference between flow and DHW outlet temperature
+r,bai,SHEMaxFlowTemp,temp,s,D2C,,°C,Maximum flow temperature for WW
+r,bai,SolPostHeat,,s,UCH,,,special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)
+w,bai,SolPostHeat,,m,UCH,,,special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)
+r,bai,SpecialAdj,,s,UCH,,,"switching on threshold for recognition of water tapping0 = 1,5 l/min and no delay, 1 = 3,7 l/min and 2s delay"
+w,bai,SpecialAdj,,m,UCH,,,"switching on threshold for recognition of water tapping0 = 1,5 l/min and no delay, 1 = 3,7 l/min and 2s delay"
+r,bai,Statenumber,,s,UCH,,,Status number
+r,bai,Status01,temp1,s,D1C,,°C,temperature,temp1,s,D1C,,°C,temperature,temp2,s,D2B,,°C,temperature,temp1,s,D1C,,°C,temperature,temp1,s,D1C,,°C,temperature,pumpstate,s,UCH,0=off;1=on;2=overrun,,pump state
+r,bai,Status02,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,hot water mode,temp0,s,UCH,,°C,temperature,temp1,s,D1C,,°C,temperature,temp0,s,UCH,,°C,temperature,temp1,s,D1C,,°C,temperature
+r,bai,Status16,temp,s,D2C,,°C,temperature
+r,bai,Status,temp,s,D2C,,°C,temperature,press,s,FLT,,bar,pressure,press,s,FLT,,bar,pressure,hcmode2,s,UCH,0=off;3=heat;4=water,,boiler mode,,s,HEX:1,,,
+uw,bai,StatusCirPump,,m,UCH,0=off;100=on,,
+r,bai,Storageloadpump,percent0,s,UCH,,%,Tank load pump demand
+r,bai,StorageLoadPumpHours,hoursum2,s,UIN,,h,Preditive maintenance data
+r,bai,StorageloadPumpStarts,cntstarts2,s,UIN,,,Preditive maintenance data
+r,bai,StorageLoadTimeMax,minutes0,s,UCH,,min,Maximum water storing time for storage without own controls
+w,bai,StorageLoadTimeMax,minutes0,m,UCH,,min,Maximum water storing time for storage without own controls
+r,bai,StoragereleaseClock,yesno,s,UCH,0=no;1=yes,,hot water release (tank storage) via eBus Control
+r,bai,StorageTemp,temp,s,D2C,,°C,Current temperature for warm start sensor (combi boiler) / Current storage tank sensor (system boiler only),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r,bai,StorageTempDesired,temp,s,D2C,,°C,Warm start temperature value (combi boiler only); Storage temperature target value (system boiler only)
+r,bai,StorageTempMax,temp,s,D2C,,°C,Maximum storage tank temperature
+r,bai,TargetFanSpeed,,s,UIN,,1/min,Fan speed setpoint
+r,bai,TargetFanSpeedOutput,,s,UIN,,1/min,Target fan speed
+r,bai,TempDiffBlock,temp0,s,UCH,,°C,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
+r,bai,TempDiffFailure,temp0,s,UCH,,°C,Number of shutdowns due to incorrect difference between supply and return temperatures
+r,bai,TempGradientFailure,temp0,s,UCH,,°C,Number of boiler shutdown due to high gradient (S.54)
+r,bai,Templimiter,,s,UCH,15=on;240=off,,Feedback of the temperature limiter sensor
+r,bai,TemplimiterWithNTC,,s,UCH,15=yes;240=no,,Temperature limiter (1 = NTC; 0 = switching contact)
+r,bai,TempMaxDiffExtTFT,temp,s,D2C,,°C,Predictive maintenance data
+r,bai,Testbyte,,s,UCH,,,Testbyte (relevant for testers)
+r,bai,TimerInputHc,onoff,s,UCH,0=off;1=on,,Timer input (block heatdemand)
+r,bai,ValveMode,,s,UCH,,,"Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position"
+w,bai,ValveMode,,m,UCH,,,"Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position"
+r,bai,ValveStarts,cntstarts2,s,UIN,,,Number of times 3WV value operated
+r,bai,VolatileLockout,,s,UCH,15=yes;240=no,,TRUE: STB errors are locking
+r,bai,VolatileLockoutIFCGV,,s,UCH,15=yes;240=no,,All IFC errors are non-volatile
+r,bai,WarmstartDemand,yesno,s,UCH,0=no;1=yes,,Status of warmstarr mode
+r,bai,WarmstartOffset,temp,s,D2C,,°C,Offset for warm start target value (combination boilers only)
+w,bai,WarmstartOffset,temp,m,D2C,,°C,Offset for warm start target value (combination boilers only)
+r,bai,WaterHcFlowMax,,s,UIN,,,v
+r1,bai,WaterPressure,press,s,FLT,,bar,CH water pressure,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
+r,bai,WaterpressureBranchControlOff,onoff,s,UCH,0=off;1=on,,Water pressure branch control switch
+r,bai,WaterpressureMeasureCounter,,s,UCH,,,Maintenance data
+r,bai,WaterpressureVariantSum,pressm2,s,UIN,,mbar,Maintenance data
+r1,bai,WP,onoff,s,UCH,0=off;1=on,,Internal central heating pump
+r,bai,WPPostrunTime,minutes0,s,UCH,,min,water pump overrun time for heating mode
+w,bai,WPPostrunTime,minutes0,m,UCH,,min,water pump overrun time for heating mode
+r,bai,WPSecondStage,onoff,s,UCH,0=off;1=on,,Second stage of the pump activated
+u,broadcast,datetime,outsidetemp,m,D2B,,°C,temperature,time,m,BTI,,,time,date,m,BDA,,,date
+u,broadcast,error,error,m,STR:10,,,
+u,broadcast,hwcStatus,onoff,m,UCH,0=off;1=on,,,VF1,m,UCH,,°C,temperature,onoff,m,UCH,0=off;1=on,,
+u,broadcast,id,manufacturer,m,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,device manufacturer,id,m,STR:5,,,device id,software,m,PIN,,,software version,hardware,m,PIN,,,hardware version
+r,broadcast,id,manufacturer,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,device manufacturer,id,s,STR:5,,,device id,software,s,PIN,,,software version,hardware,s,PIN,,,hardware version
+w,broadcast,id,
+u,broadcast,load,onoff,m,UCH,0=off;1=on,,
+u,broadcast,outsidetemp,temp2,m,D2B,,°C,temperature
+w,broadcast,queryexistence,
+u,broadcast,signoflife,
+u,broadcast,vdatetime,time,m,BTI,,,,date,m,BDA,,,
+r,general,valuerange,id,m,UIN,,,register number,,s,IGN:2,,,,cur,s,UIN,,,current value,min,s,UIN,,,minimum value,max,s,UIN,,,maximum value,def,s,UIN,,,default value
+r,memory,eeprom,address,m,UIN,,,start address,count,m,UCH,,,number of bytes,data,s,HEX:*,,,data bytes
+w,memory,eeprom,address,m,UIN,,,start address,data,m,HEX:*,,,data bytes
+r,memory,ram,address,m,UIN,,,start address,count,m,UCH,,,number of bytes,data,s,HEX:*,,,data bytes
+w,memory,ram,address,m,UIN,,,start address,data,m,HEX:*,,,data bytes
+r,scan,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
+r,scan.08,,MF,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,,ID,s,STR:5,,,,SW,s,PIN,,,,HW,s,PIN,,,
+r,scan.08,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
+r,scan.15,,MF,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,,ID,s,STR:5,,,,SW,s,PIN,,,,HW,s,PIN,,,
+r,scan.15,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
+

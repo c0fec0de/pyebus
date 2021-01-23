@@ -1,0 +1,9 @@
+
+b7v z1Timer.Friday = 06:00;22:00;-:-;-:-;-:-;-:-
+  b7v z1Timer.Friday ('from.0=HourMinute(6, 0)', 'to.0=HourMinute(22, 0)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+
+b7v PrEnergySum = 2
+  b7v PrEnergySum ("energy4='2 kWh'",)
+
+bai errorhistory = nosignal
+  bai errorhistory ('index=NA', 'status=NA', 'time2=NA', 'date=NA', 'error=NA', 'date+time2=NA')

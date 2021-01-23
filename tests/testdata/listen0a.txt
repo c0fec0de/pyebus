@@ -1,0 +1,45 @@
+bai WarmstartDemand = no
+bai WaterHcFlowMax = 3063
+bai WaterPressure = 2.125;ok
+bai WaterPressure = 2.125
+mc.3 Status = 40;off;38.31;26
+mc.4 Status = 0;off;36.50;24
+mc.5 Status = 0;off;30.31;23
+bai WaterpressureBranchControlOff = off
+bai WaterpressureMeasureCounter = 105
+bai WaterpressureVariantSum = 65440
+bai WPPostrunTime = 5
+bai WPSecondStage = on
+cc currenterror = -;-;-;-;-
+cc DateTime = valid;20:57:48;30.01.2020;2.500
+cc DateTime = valid;20:57:48
+cc Params = 30;6;22;15;75
+cc Stat15MinBusTimeout = 0
+cc StatMonthOfInstallation = 3
+cc StatOperatingHours = 16610
+cc StatPowerOn = 31
+mc.5 Status = 0;off;30.94;23
+cc StatRestarts = 0
+cc StatRTOSErrorcode = 0
+cc StatRTOSErrorCounter = 0
+cc Status0a = -;off;on;on;0
+cc Status16 = 2.50
+cc Status = 0;off;-;0
+cc StatYearOfInstallation = 18
+cc Timer.Friday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+cc Timer.Monday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+cc Timer.Saturday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+cc Timer.Sunday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+cc Timer.Thursday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+cc Timer.Tuesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+cc Timer.Wednesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+qhc BoilerCircuitDisabled = yes
+hc CleaningLady = 0
+hc FlowTempDesired = 0.0
+hc FlowTempMax = 90
+hc FlowTempMin 15
+hc FlowTempMin
+hc Hc1PumpPort = off
+mc.4 Status = 0;off;36.62;24
+
+hc FlowTempMax no data stored
