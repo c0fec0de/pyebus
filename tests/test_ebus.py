@@ -132,6 +132,7 @@ def test_running():
             pyebus.CircuitInfo("ui", "Vaillant", "UI", "0508", "6201", 21),
         )
         assert ebus.get_circuitinfo("rcc.3") == pyebus.CircuitInfo("rcc.3", "Vaillant", "RC C", "0508", "6201", 245)
+        assert ebus.get_circuitinfo("unknown") is None
 
         ebus.msgdefcodes = [""]
         ebus.decode_msgdefcodes()

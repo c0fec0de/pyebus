@@ -116,7 +116,10 @@ class Ebus:
 
     def get_circuitinfo(self, circuit):
         """Return :any:`CircuitInfo` for `circuit`."""
-        return self._circuitinfomap[circuit]
+        try:
+            return self._circuitinfomap[circuit]
+        except KeyError:
+            return None
 
     @property
     def msgdefs(self):

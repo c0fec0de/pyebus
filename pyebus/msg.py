@@ -68,7 +68,7 @@ def filter_msg(msg=None, msgdefs=None):
         if msgdefs is not None:
             for msgdef in msgdefs:
                 if ident == msgdef.ident:
-                    if msg.msgdef == msgdef:
+                    if msg.msgdef == msgdef or not msg.valid:
                         return msg
                     else:
                         fields = tuple(
