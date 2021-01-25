@@ -36,12 +36,14 @@ class Ebus:
         msgdefs (MsgDefs): Message Definitions
     """
 
+    # pylint: disable=R0902
+
     __slots__ = (
         "connection",
         "scaninterval",
         "scans",
         "msgdefcodes",
-        "msgdecoder",
+        "_msgdecoder",
         "_circuitinfos",
         "_circuitinfomap",
     )
@@ -62,7 +64,7 @@ class Ebus:
         self.scaninterval = scaninterval
         self.scans = scans
         self.msgdefcodes = msgdefcodes or []
-        self.msgdecoder = MsgDecoder(msgdefs or MsgDefs())
+        self._msgdecoder = MsgDecoder(msgdefs or MsgDefs())
         self.circuitinfos = circuitinfos or []
         _LOGGER.info(f"{self}")
 
@@ -122,11 +124,11 @@ class Ebus:
         Message Defintions :any:`MsgDefs`.
 
         This property is writeable.."""
-        return self.msgdecoder.msgdefs
+        return self._msgdecoder.msgdefs
 
     @msgdefs.setter
     def msgdefs(self, msgdefs):
-        self.msgdecoder.msgdefs = msgdefs
+        self._msgdecoder.msgdefs = msgdefs
 
     def __copy__(self):
         return Ebus(
@@ -457,7 +459,7 @@ class Ebus:
         except CommandError as exc:  # pragma: no cover
             return BrokenMsg(msgdef, str(exc))
         else:
-            return self.msgdecoder.decode_value(msgdef, line)
+            return self._msgdecoder.decode_value(msgdef, line)
 
     async def _async_listen(self, msgdefs):
         await self.connection.async_request("listen")
@@ -473,7 +475,7 @@ class Ebus:
     def _decode_msg(self, line):
         if line:
             try:
-                return self.msgdecoder.decode_line(line)
+                return self._msgdecoder.decode_line(line)
             except UnknownMsgError:
                 pass
             except ValueError as exc:  # pragma: no cover
