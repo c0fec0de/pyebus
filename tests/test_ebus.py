@@ -114,23 +114,23 @@ def test_running():
         msgdefs = ebus.msgdefs
         allmsgdefs = msgdefs.resolve("*/*")
 
-        assert ebus.circuitinfos == {}
+        assert ebus.circuitinfos == []
         await ebus.async_load_circuitinfos()
-        assert ebus.circuitinfos == {
-            "bai": pyebus.CircuitInfo("bai", "Vaillant", "BAI00", "0204", "9602", 8),
-            "cc": pyebus.CircuitInfo("cc", "Vaillant", "VR630", "0500", "6301", 35),
-            "hc": pyebus.CircuitInfo("hc", "Vaillant", "VR630", "0500", "6301", 38),
-            "hwc": pyebus.CircuitInfo("hwc", "Vaillant", "VR630", "0500", "6301", 37),
-            "mc": pyebus.CircuitInfo("mc", "Vaillant", "VR630", "0500", "6301", 80),
-            "mc.3": pyebus.CircuitInfo("mc.3", "Vaillant", "VR630", "0500", "6301", 81),
-            "mc.4": pyebus.CircuitInfo("mc.4", "Vaillant", "MC2", "0500", "6301", 82),
-            "mc.5": pyebus.CircuitInfo("mc.5", "Vaillant", "MC2", "0500", "6301", 83),
-            "rcc": pyebus.CircuitInfo("rcc", "Vaillant", "RC C", "0508", "6201", 117),
-            "rcc.3": pyebus.CircuitInfo("rcc.3", "Vaillant", "RC C", "0508", "6201", 245),
-            "rcc.4": pyebus.CircuitInfo("rcc.4", "Vaillant", "RC C", "0508", "6201", 28),
-            "rcc.5": pyebus.CircuitInfo("rcc.5", "Vaillant", "RC C", "0508", "6201", 60),
-            "ui": pyebus.CircuitInfo("ui", "Vaillant", "UI", "0508", "6201", 21),
-        }
+        assert ebus.circuitinfos == (
+            pyebus.CircuitInfo("bai", "Vaillant", "BAI00", "0204", "9602", 8),
+            pyebus.CircuitInfo("cc", "Vaillant", "VR630", "0500", "6301", 35),
+            pyebus.CircuitInfo("hc", "Vaillant", "VR630", "0500", "6301", 38),
+            pyebus.CircuitInfo("hwc", "Vaillant", "VR630", "0500", "6301", 37),
+            pyebus.CircuitInfo("mc", "Vaillant", "VR630", "0500", "6301", 80),
+            pyebus.CircuitInfo("mc.3", "Vaillant", "VR630", "0500", "6301", 81),
+            pyebus.CircuitInfo("mc.4", "Vaillant", "MC2", "0500", "6301", 82),
+            pyebus.CircuitInfo("mc.5", "Vaillant", "MC2", "0500", "6301", 83),
+            pyebus.CircuitInfo("rcc", "Vaillant", "RC C", "0508", "6201", 117),
+            pyebus.CircuitInfo("rcc.3", "Vaillant", "RC C", "0508", "6201", 245),
+            pyebus.CircuitInfo("rcc.4", "Vaillant", "RC C", "0508", "6201", 28),
+            pyebus.CircuitInfo("rcc.5", "Vaillant", "RC C", "0508", "6201", 60),
+            pyebus.CircuitInfo("ui", "Vaillant", "UI", "0508", "6201", 21),
+        )
 
         ebus.msgdefcodes = [""]
         ebus.decode_msgdefcodes()

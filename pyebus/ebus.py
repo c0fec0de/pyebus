@@ -24,7 +24,19 @@ class Ebus:
 
     The EBUS handle, using one :any:`Connection` to an EBUSD instance.
     One EBUSD server can handle multiple :any:`Ebus` instances.
+
+    Keyword Args:
+        host (str): EBUSD host
+        port (int): EBUSD port
+        timeout (int): Connection Timeout on connect and write.
+        scaninterval (str): EBUSD scan - check interval
+        scans (str): EBUSD scan - number of intervals
+        circuitinfos (list): List with :any:`CircuitInfo`s
+        msgdefcodes (list): EBUSD Message Definition Codes
+        msgdefs (MsgDefs): Message Definitions
     """
+
+    __slots__ = ("connection", "scaninterval", "scans", "msgdefcodes", "msgdecoder", "circuitinfos")
 
     def __init__(
         self,
@@ -33,14 +45,16 @@ class Ebus:
         timeout=DEFAULT_TIMEOUT,
         scaninterval=DEFAULT_SCANINTERVAL,
         scans=DEFAULT_SCANS,
+        circuitinfos=None,
+        msgdefcodes=None,
         msgdefs=None,
     ):
         self.connection = Connection(host=host, port=port, autoconnect=True, timeout=timeout)
         self.scaninterval = scaninterval
         self.scans = scans
-        self._msgdefcodes = []
+        self.msgdefcodes = msgdefcodes or []
         self.msgdecoder = MsgDecoder(msgdefs or MsgDefs())
-        self.circuitinfos = {}
+        self.circuitinfos = circuitinfos or []
         _LOGGER.info(f"{self}")
 
     def __repr__(self):
@@ -76,19 +90,6 @@ class Ebus:
         return self.connection.timeout
 
     @property
-    def msgdefcodes(self):
-        """
-        List with raw EBUSD Message Defintions Codes.
-
-        This property is writeable.
-        """
-        return self._msgdefcodes
-
-    @msgdefcodes.setter
-    def msgdefcodes(self, msgdefcodes):
-        self._msgdefcodes = msgdefcodes
-
-    @property
     def msgdefs(self):
         """
         Message Defintions :any:`MsgDefs`.
@@ -107,6 +108,8 @@ class Ebus:
             timeout=self.timeout,
             scaninterval=self.scaninterval,
             scans=self.scans,
+            circuitinfos=self.circuitinfos,
+            msgdefcodes=self.msgdefcodes,
             msgdefs=self.msgdefs,
         )
 

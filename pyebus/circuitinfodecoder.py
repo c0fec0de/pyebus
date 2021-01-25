@@ -55,36 +55,37 @@ def decode_circuitinfos(info):
     ...     "address f0": "master #5",
     ...     'address f5': 'slave #5, scanned "MF=Vaillant;ID=RC C ;SW=0508;HW=6201", loaded "vaillant/f5.rcc.3.csv"',
     ... }
-    >>> for circuit, circuitinfo in decode_circuitinfos(info).items():
-    ...     print(f'{circuit:6s}: {circuitinfo}')
-    bai   : CircuitInfo(circuit='bai', manufacturer='Vaillant', model='BAI00', swversion='0204', hwversion='9602', address=8)
-    ui    : CircuitInfo(circuit='ui', manufacturer='Vaillant', model='UI', swversion='0508', hwversion='6201', address=21)
-    rcc.4 : CircuitInfo(circuit='rcc.4', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=28)
-    cc    : CircuitInfo(circuit='cc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=35)
-    hwc   : CircuitInfo(circuit='hwc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=37)
-    hc    : CircuitInfo(circuit='hc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=38)
-    rcc.5 : CircuitInfo(circuit='rcc.5', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=60)
-    mc    : CircuitInfo(circuit='mc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=80)
-    mc.3  : CircuitInfo(circuit='mc.3', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=81)
-    mc.4  : CircuitInfo(circuit='mc.4', manufacturer='Vaillant', model='MC2', swversion='0500', hwversion='6301', address=82)
-    mc.5  : CircuitInfo(circuit='mc.5', manufacturer='Vaillant', model='MC2', swversion='0500', hwversion='6301', address=83)
-    rcc   : CircuitInfo(circuit='rcc', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=117)
-    rcc.3 : CircuitInfo(circuit='rcc.3', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=245)
+    >>> for circuitinfo in decode_circuitinfos(info):
+    ...     print(circuitinfo)
+    CircuitInfo(circuit='bai', manufacturer='Vaillant', model='BAI00', swversion='0204', hwversion='9602', address=8)
+    CircuitInfo(circuit='cc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=35)
+    CircuitInfo(circuit='hc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=38)
+    CircuitInfo(circuit='hwc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=37)
+    CircuitInfo(circuit='mc', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=80)
+    CircuitInfo(circuit='mc.3', manufacturer='Vaillant', model='VR630', swversion='0500', hwversion='6301', address=81)
+    CircuitInfo(circuit='mc.4', manufacturer='Vaillant', model='MC2', swversion='0500', hwversion='6301', address=82)
+    CircuitInfo(circuit='mc.5', manufacturer='Vaillant', model='MC2', swversion='0500', hwversion='6301', address=83)
+    CircuitInfo(circuit='rcc', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=117)
+    CircuitInfo(circuit='rcc.3', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=245)
+    CircuitInfo(circuit='rcc.4', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=28)
+    CircuitInfo(circuit='rcc.5', manufacturer='Vaillant', model='RC C', swversion='0508', hwversion='6201', address=60)
+    CircuitInfo(circuit='ui', manufacturer='Vaillant', model='UI', swversion='0508', hwversion='6201', address=21)
     """
-    circuitinfos = {}
+    circuitinfos = []
     if isinstance(info, dict):
         info = [f"{key}: {value}" for key, value in info.items()]
     for line in info:
         mat = _RE_CIRCUIT.match(line)
         if mat:
             address, manufacturer, model, swversion, hwversion, circuit, _ = mat.groups()
-            circuitinfo = CircuitInfo(
-                circuit.strip(),
-                manufacturer.strip(),
-                model.strip(),
-                swversion.strip(),
-                hwversion.strip(),
-                int(address, 16),
+            circuitinfos.append(
+                CircuitInfo(
+                    circuit.strip(),
+                    manufacturer.strip(),
+                    model.strip(),
+                    swversion.strip(),
+                    hwversion.strip(),
+                    int(address, 16),
+                )
             )
-            circuitinfos[circuitinfo.circuit] = circuitinfo
-    return circuitinfos
+    return tuple(sorted(circuitinfos, key=lambda circuitinfo: circuitinfo.circuit))
