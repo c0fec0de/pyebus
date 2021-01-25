@@ -92,3 +92,25 @@ def test_write_prio():
     assert p.get_prio(md) is None
     p.set_prio(md, 2)
     assert p.get_prio(md) is None
+
+
+def test_notify_init():
+    """Initilize Notify by setprio."""
+    fd = FieldDef(0, "temp", types.IntType(-127, 128))
+    md = MsgDef("circuit", "name", [fd], read=True, setprio=5)
+    msgdefs = MsgDefs()
+    msgdefs.add(md)
+    m0 = Msg(md, [Field(fd, 3)])
+    m1 = Msg(md, [Field(fd, 4)])
+    p = Prioritizer(msgdefs, (0.01, 0.03), intervals=1)
+    assert p.get_prio(md) == 1
+    p.notify(m0)
+    assert p.get_prio(md) == 5
+    p.notify(m1)
+    assert p.get_prio(md) == 5
+    p.notify(m0)
+    assert p.get_prio(md) == 4
+    p.notify(m1)
+    assert p.get_prio(md) == 4
+    p.notify(m0)
+    assert p.get_prio(md) == 3

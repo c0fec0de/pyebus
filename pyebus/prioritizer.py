@@ -101,7 +101,7 @@ class Prioritizer:
                 prio = self._get_prio(msg.msgdef)
                 is_const = values == lastvalues
                 older = prio < self.maxprio and age > self._thresholds[prio - 1]
-                newer = prio > 1 and age < self._thresholds[prio - 2]
+                newer = prio > 1 and age < self._thresholds[min(prio, self.maxprio) - 2]
                 _LOGGER.debug(
                     "Notify %s: age=%r prio=%r is_const=%r older=%r newer=%r", ident, age, prio, is_const, older, newer
                 )
