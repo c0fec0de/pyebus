@@ -36,7 +36,15 @@ class Ebus:
         msgdefs (MsgDefs): Message Definitions
     """
 
-    __slots__ = ("connection", "scaninterval", "scans", "msgdefcodes", "msgdecoder", "circuitinfos")
+    __slots__ = (
+        "connection",
+        "scaninterval",
+        "scans",
+        "msgdefcodes",
+        "msgdecoder",
+        "_circuitinfos",
+        "_circuitinfomap",
+    )
 
     def __init__(
         self,
@@ -49,6 +57,7 @@ class Ebus:
         msgdefcodes=None,
         msgdefs=None,
     ):
+        self._circuitinfomap = {}
         self.connection = Connection(host=host, port=port, autoconnect=True, timeout=timeout)
         self.scaninterval = scaninterval
         self.scans = scans
@@ -88,6 +97,24 @@ class Ebus:
     def timeout(self):
         """Timeout."""
         return self.connection.timeout
+
+    @property
+    def circuitinfos(self):
+        """
+        Circuit Informations :any:`CircuitInfo`.
+
+        This property is writeable.
+        """
+        return self._circuitinfos
+
+    @circuitinfos.setter
+    def circuitinfos(self, circuitinfos):
+        self._circuitinfos = tuple(circuitinfos)
+        self._circuitinfomap = dict((circuitinfo.circuit, circuitinfo) for circuitinfo in self._circuitinfos)
+
+    def get_circuitinfo(self, circuit):
+        """Return :any:`CircuitInfo` for `circuit`."""
+        return self._circuitinfomap[circuit]
 
     @property
     def msgdefs(self):
@@ -192,7 +219,7 @@ class Ebus:
         for msgdef in sorted(msgdefs, key=lambda msgdef: (msgdef.circuit, msgdef.name)):
             self.msgdefs.add(msgdef)
 
-    async def async_read(self, msgdef, ttl=None):
+    async def async_read(self, msgdef, ttl=None, setprio=None):
         """
         Read Message.
 
@@ -201,6 +228,7 @@ class Ebus:
 
         Keyword Args:
             ttl (int): Time-to-live. Maximum age of read value in seconds.
+            setprio: Priority `1-9` or `A` for automatic.
 
         Returns:
             Msg: Message
@@ -213,6 +241,8 @@ class Ebus:
             Shutdown: On EBUSD shutdown.
         """
         _LOGGER.info(f"read({msgdef!r}, ttl={ttl!r})")
+        if setprio:
+            msgdef = msgdef.replace(setprio=resolve_prio(msgdef, setprio))
         return await self._async_read(msgdef, ttl)
 
     async def async_write(self, msgdef, value, ttl=0):
@@ -261,7 +291,6 @@ class Ebus:
         Listen to EBUS for messages.
 
         Listen to automatically updated messages and EBUSDs polling mechanism.
-        Use :any:`async_setprio()` to set the EBUSD polling priority.
 
         Keyword Args:
             msgdefs (MsgDefs): Message definitions to be listened, other messages are ignored.
@@ -279,36 +308,17 @@ class Ebus:
         async for msg in self._async_listen(msgdefs):
             yield msg
 
-    async def async_setprio(self, msgdef, setprio=None):
-        """
-        Set EBUSD message poll priority.
-
-        Args:
-            msgdef (MsgDef): Message definition
-
-        Keyword Args:
-            setprio: Priority `1-9` or `A` for automatic.
-
-        Raises:
-            ConnectionRefusedError: If connection cannot be established
-            ConnectionError: On connection breakdown.
-            CommandError: If command failed
-            Shutdown: On EBUSD shutdown.
-        """
-        _LOGGER.info(f"async_setprio({msgdef!r}, setprio={setprio!r})")
-        msgdef = msgdef.replace(setprio=resolve_prio(msgdef, setprio or msgdef.setprio))
-        return await self._async_read(msgdef)
-
-    async def async_observe(self, msgdefs=None, ttl=None):
+    async def async_observe(self, msgdefs=None, ttl=None, setprio=None):
         """
         Observe `msgdefs` messages.
 
         Explicitly read all messages and then listen to automatically updated messages and
         EBUSDs polling mechanism.
-        Use :any:`async_setprio()` to set the EBUSD polling priority.
 
         Keyword Args:
             msgdefs (MsgDefs): Message definitions to be observed, other messages are ignored.
+            ttl (int): Time-to-live. Maximum age of read value in seconds.
+            setprio: Priority `1-9` or `A` for automatic.
 
         Yields:
             Msg: Message
@@ -326,6 +336,8 @@ class Ebus:
         # read all
         for msgdef in msgdefs:
             if msgdef.read:
+                if setprio:
+                    msgdef = msgdef.replace(setprio=resolve_prio(msgdef, setprio))
                 msg = await self._async_read(msgdef, ttl=ttl)
                 _LOGGER.debug("observe-read: {msg}")
                 msg = filter_msg(msg, msgdefs)

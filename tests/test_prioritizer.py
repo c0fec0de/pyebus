@@ -1,7 +1,7 @@
 from datetime import timedelta
 from time import sleep
 
-from pyebus import Field, FieldDef, Msg, MsgDef, Prioritizer, types
+from pyebus import Field, FieldDef, Msg, MsgDef, MsgDefs, Prioritizer, types
 
 
 def _init():
@@ -10,8 +10,9 @@ def _init():
     md = MsgDef("circuit", "name", [fd0, fd1], read=True)
     m0 = Msg(md, [Field(fd0, 3), Field(fd1, "foo")])
     m1 = Msg(md, [Field(fd0, 3), Field(fd1, "bar")])
-
-    return Prioritizer((0.01, 0.03), intervals=1), md, m0, m1
+    msgdefs = MsgDefs()
+    msgdefs.add(md)
+    return Prioritizer(msgdefs, (0.01, 0.03), intervals=1), md, m0, m1
 
 
 def _step(p, md, m, slp, prio):
@@ -21,7 +22,7 @@ def _step(p, md, m, slp, prio):
 
 
 def test_basic():
-    p = Prioritizer((0.01, 0.03))
+    p = Prioritizer(MsgDefs(), (0.01, 0.03))
     assert p.thresholds == (timedelta(microseconds=10000), timedelta(microseconds=30000))
     assert p.intervals == 3
 
@@ -36,7 +37,7 @@ def test_inc():
     for m in [m0] * 30:
         _step(p, md, m, 0.005, 3)
 
-    assert tuple(p.iter_priochanges()) == ((md.ident, 3),)
+    assert tuple(p.iter_priochanges()) == (md.replace(setprio=3),)
 
 
 def test_inc_mid():
@@ -46,6 +47,8 @@ def test_inc_mid():
         _step(p, md, m, 0.02, 1)
     for m in [m0, m1] * 10:
         _step(p, md, m, 0.02, 2)
+
+    assert tuple(p.iter_priochanges()) == (md.replace(setprio=2),)
 
 
 def test_dec():
@@ -58,6 +61,8 @@ def test_dec():
         _step(p, md, m, 0.005, 2)
     for m in [m0, m1] * 10:
         _step(p, md, m, 0.005, 1)
+
+    assert tuple(p.iter_priochanges()) == (md.replace(setprio=1),)
 
 
 def test_dec_mid():
@@ -76,9 +81,11 @@ def test_default_prio():
 
 
 def test_write_prio():
-    p = Prioritizer((timedelta(seconds=0.03),))
+    msgdefs = MsgDefs()
+    p = Prioritizer(msgdefs, (timedelta(seconds=0.03),))
     assert p.thresholds == (timedelta(seconds=0.03),)
     md = MsgDef("circuit", "name", [], write=True)
+    msgdefs.add(md)
     m = Msg(md, [])
     assert p.get_prio(md) is None
     p.notify(m)

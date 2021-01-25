@@ -114,7 +114,7 @@ def test_running():
         msgdefs = ebus.msgdefs
         allmsgdefs = msgdefs.resolve("*/*")
 
-        assert ebus.circuitinfos == []
+        assert ebus.circuitinfos == tuple()
         await ebus.async_load_circuitinfos()
         assert ebus.circuitinfos == (
             pyebus.CircuitInfo("bai", "Vaillant", "BAI00", "0204", "9602", 8),
@@ -131,6 +131,7 @@ def test_running():
             pyebus.CircuitInfo("rcc.5", "Vaillant", "RC C", "0508", "6201", 60),
             pyebus.CircuitInfo("ui", "Vaillant", "UI", "0508", "6201", 21),
         )
+        assert ebus.get_circuitinfo("rcc.3") == pyebus.CircuitInfo("rcc.3", "Vaillant", "RC C", "0508", "6201", 245)
 
         ebus.msgdefcodes = [""]
         ebus.decode_msgdefcodes()
@@ -157,9 +158,7 @@ def test_read_write():
         msg = await ebus.async_read(msgdef)
         assert msg.values == (0.0, "cutoff", "cutoff")
         await ebus.async_write(msgdef1, "ok")
-        msg = await ebus.async_read(msgdef)
-        assert msg.values == (0.0, "ok", 0.0)
-        msg = await ebus.async_setprio(msgdef, setprio=pyebus.AUTO)
+        msg = await ebus.async_read(msgdef, setprio=pyebus.AUTO)
         assert msg.values == (0.0, "ok", 0.0)
 
         assert server.prios == {("bai", "FlowTemp"): "2"}

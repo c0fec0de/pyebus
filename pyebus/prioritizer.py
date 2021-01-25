@@ -22,9 +22,15 @@ class Prioritizer:
         intervals: Number of intervals the message update rate need to deviate in a row to get a new prio.
     """
 
-    def __init__(self, thresholds, intervals=3):
+    # pylint: disable=R0902
+    def __init__(self, msgdefs, thresholds, intervals=3):
+        self._msgdefs = msgdefs
         self._thresholds = tuple(_cast_threshold(threshold) for threshold in thresholds)
         self.intervals = intervals
+        self.clear()
+
+    def clear(self):
+        """Clear."""
         self._msgtimestamps = {}
         self._msgprios = {}
         self._upfilter = collections.defaultdict(lambda: 0)
@@ -69,15 +75,16 @@ class Prioritizer:
         Iterate over done priority changes.
 
         Yields
-            (ident, prio)
+            (MsgDef)
         """
         msgpriochanges = self._msgpriochanges
         while msgpriochanges:
-            yield msgpriochanges.popitem()
+            yield msgpriochanges.popitem()[1]
 
     def notify(self, msg):
         """Notify about received message."""
-        if msg.msgdef.read:
+        msgdef = msg.msgdef
+        if msg.valid and msgdef.read:
             msgtimestamps = self._msgtimestamps
             ident = msg.ident
             values = tuple(field.value for field in msg.fields)
@@ -85,7 +92,9 @@ class Prioritizer:
             if ident not in msgtimestamps:
                 # unknown, store first entry
                 msgtimestamps[ident] = (timestamp, values)
-                _LOGGER.debug("Init   %s", ident)
+                prio = msgdef.setprio or msgdef.prio or self._get_prio(msg.msgdef)
+                self._msgprios[ident] = prio
+                _LOGGER.debug("Init   %s, prio=%d", ident, prio)
             else:
                 (lasttimestamp, lastvalues) = msgtimestamps[ident]
                 age = timestamp - lasttimestamp
@@ -102,15 +111,18 @@ class Prioritizer:
                 if not is_const or older:
                     if self._filter(self._upfilter, ident, is_const or older):
                         _LOGGER.debug("Inc!   %s", ident)
-                        self._msgprios[ident] = prio = prio + 1
-                        self._msgpriochanges[ident] = prio
+                        self._set_prio(ident, prio + 1)
                     msgtimestamps[ident] = (timestamp, values)
                 # check for decrement
                 #   - reset filter, if constant value
                 if self._filter(self._dnfilter, ident, not is_const and newer):
                     _LOGGER.debug("Dec!   %s", ident)
-                    self._msgprios[ident] = prio = prio - 1
-                    self._msgpriochanges[ident] = prio
+                    self._set_prio(ident, prio - 1)
+
+    def _set_prio(self, ident, prio):
+        self._msgprios[ident] = prio
+        msgdef = self._msgdefs.get_ident(ident)
+        self._msgpriochanges[ident] = msgdef.replace(setprio=prio)
 
     def _clear_filter(self, ident):
         self._upfilter[ident] = 0

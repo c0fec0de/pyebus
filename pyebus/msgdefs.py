@@ -6,6 +6,23 @@ from fnmatch import fnmatch
 from .const import AUTO
 from .msgdef import resolve_prio
 
+_RE_RESOLVE = re.compile(r"\A([^/#+]+)/([^/#+]+)(#(\d|A))?(/([^/#]*))?\Z")
+
+
+class Pattern(collections.namedtuple("Pattern", "circuit name setprio fieldname")):
+
+    """Message Definition and Field Definition Search Pattern."""
+
+    @staticmethod
+    def from_str(pattern):
+        """Create :any:`Pattern` from `pattern` string."""
+        mat = _RE_RESOLVE.fullmatch(pattern)
+        if mat:
+            circuit, name, _, setprio, _, fieldname = mat.groups()
+            return Pattern(circuit, name, setprio, fieldname)
+        else:
+            return None
+
 
 class MsgDefs:
 
@@ -33,8 +50,6 @@ class MsgDefs:
     >>> msgdefs.summary()
     '2 messages (2 read, 0 update, 0 write) with 7 fields'
     """
-
-    _re_resolve = re.compile(r"\A([^/#+]+)/([^/#+]+)(#(\d|A))?(/([^/#]*))?\Z")
 
     def __init__(self):
         self.clear()
@@ -66,6 +81,18 @@ class MsgDefs:
             circuitmsgdefs = msgdefs[circuit]
             if name in circuitmsgdefs:
                 return circuitmsgdefs[name][0]
+        return None
+
+    def get_ident(self, ident):
+        """
+        Get message with `ident`.
+
+        Returns
+            MsgDef: Message Definition
+        """
+        pat = Pattern.from_str(ident)
+        if pat:
+            return self.get(pat.circuit, pat.name)
         return None
 
     def find(self, circuit, name="*"):
@@ -100,9 +127,9 @@ class MsgDefs:
         return msgdefs
 
     def _resolve(self, pattern):
-        mat = self._re_resolve.fullmatch(pattern)
-        if mat:
-            circuit, name, _, setprio, _, fieldname = mat.groups()
+        pat = Pattern.from_str(pattern)
+        if pat:
+            circuit, name, setprio, fieldname = pat
             for msgdef in self.find(circuit, name):
                 if fieldname is None:
                     fields = msgdef.children
