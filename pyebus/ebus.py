@@ -245,7 +245,7 @@ class Ebus:
             CommandError: If command failed
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.info(f"read({msgdef!r}, ttl={ttl!r})")
+        _LOGGER.info(f"read({msgdef!r}, ttl={ttl!r}), setprio={ttl!r}")
         if setprio:
             msgdef = msgdef.replace(setprio=resolve_prio(msgdef, setprio))
         return await self._async_read(msgdef, ttl)
@@ -334,7 +334,7 @@ class Ebus:
             CommandError: If command failed
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.info(f"observe(msgdefs={msgdefs!r}, ttl={ttl!r})")
+        _LOGGER.info(f"observe(msgdefs={msgdefs!r}, ttl={ttl!r}, setprio={setprio!r})")
         msgdefs = msgdefs or self.msgdefs
         data = collections.defaultdict(lambda: None)
 
@@ -344,7 +344,7 @@ class Ebus:
                 if setprio:
                     msgdef = msgdef.replace(setprio=resolve_prio(msgdef, setprio))
                 msg = await self._async_read(msgdef, ttl=ttl)
-                _LOGGER.debug("observe-read: {msg}")
+                _LOGGER.debug("observe-read: %r", msg)
                 msg = filter_msg(msg, msgdefs)
                 if msg:
                     if msg.valid:
@@ -357,7 +357,7 @@ class Ebus:
         await self.connection.async_request("find -d")
         async for line in self.connection.async_read(check=False):
             msg = self._decode_msg(line)
-            _LOGGER.debug("observe-find: {msg}")
+            _LOGGER.debug("observe-find: %r", msg)
             msg = filter_msg(msg, msgdefs)
             if msg and msg != data[msg.msgdef.ident]:
                 yield msg
@@ -365,7 +365,7 @@ class Ebus:
 
         # listen
         async for msg in self._async_listen(msgdefs):
-            _LOGGER.debug("observe-listen: {msg}")
+            _LOGGER.debug("observe-listen: %r", msg)
             yield msg
 
     async def async_get_state(self):

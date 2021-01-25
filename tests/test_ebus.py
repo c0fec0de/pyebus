@@ -182,8 +182,10 @@ def test_observe():
     async def test():
         await ebus.async_load_msgdefs()
 
+        assert server.prios == {}
+
         msgs = []
-        async for msg in ebus.async_observe():
+        async for msg in ebus.async_observe(setprio=3):
             msgs.append((msg.ident, msg.values))
             if len(msgs) > 50:
                 break
@@ -214,7 +216,8 @@ def test_observe():
             ("bai/FanHours", (0,)),
             ("bai/FanPWMSum", (0,)),
             ("bai/FanPWMTest", (0,)),
-            ("bai/FlowTemp", (0.0, pyebus.NA, pyebus.NA)),
+            # ("bai/FlowTemp", (0.0, pyebus.NA, pyebus.NA)),
+            ("bai/FlowTemp", (pyebus.NA,)),
             ("bai/averageIgnitiontime", (0.0,)),
             ("bai/dcfState", (0,)),
             ("bai/extWP", (0,)),
@@ -225,6 +228,8 @@ def test_observe():
             ("bai/FlowTemp", (None, None, None)),
             ("bai/FlowTemp", (3.125, "ok", 3.125)),
         ]
+
+        assert len(server.prios) == 30
 
     run(test, server=server)
 
@@ -262,8 +267,6 @@ def test_listen_broken():
 
     async def test():
         await ebus.async_load_msgdefs()
-
-        #         msgs = []
         with pytest.raises(pyebus.CommandError):
             async for msg in ebus.async_listen():
                 pass
