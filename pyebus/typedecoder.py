@@ -219,18 +219,10 @@ def decode_type(typecode, divider=None):
         # STR       character string              Hello
         # NTS       character string              Hello
         if typecode.startswith(("STR:", "NTS:")):
-            len_ = typecode.split(":")[1]
-            if len_ != "*":
-                TYPEMAP[typecode] = types.StrType(int(len_))
-            else:
-                TYPEMAP[typecode] = types.StrType()
+            TYPEMAP[typecode] = types.StrType(_get_length(typecode))
         # HEX       hex digit string              hex octet sep by space
         if typecode.startswith("HEX:"):
-            len_ = typecode.split(":")[1]
-            if len_ != "*":
-                TYPEMAP[typecode] = types.HexType(int(len_))
-            else:
-                TYPEMAP[typecode] = types.HexType()
+            TYPEMAP[typecode] = types.HexType(_get_length(typecode))
         # BI0     bit 0                         0...1
         mat = _RE_BIT.match(typecode)
         if mat:
@@ -241,3 +233,11 @@ def decode_type(typecode, divider=None):
     if divider:
         type_ = type_.with_divider(divider)
     return type_
+
+
+def _get_length(typecode):
+    length = typecode.split(":")[1]
+    if length != "*":
+        return int(length)
+    else:
+        return None
