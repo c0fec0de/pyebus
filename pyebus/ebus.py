@@ -66,7 +66,7 @@ class Ebus:
         self.msgdefcodes = msgdefcodes or []
         self._msgdecoder = MsgDecoder(msgdefs or MsgDefs())
         self.circuitinfos = circuitinfos or []
-        _LOGGER.info(f"{self}")
+        _LOGGER.info(repr(self))
 
     def __repr__(self):
         return repr_(
@@ -205,7 +205,7 @@ class Ebus:
                 try:
                     msgdef = decode_msgdef(line)
                 except ValueError as exc:
-                    _LOGGER.warning(f"Cannot decode message definition '{line}' ({exc})")
+                    _LOGGER.warning("Cannot decode message definition %r (%s)", line, exc)
                 if not msgdef.circuit.startswith("scan"):
                     msgdefcodes.append(line)
 
@@ -218,7 +218,7 @@ class Ebus:
             try:
                 msgdefs.append(decode_msgdef(msgdefcode))
             except ValueError as exc:
-                _LOGGER.warning(f"Cannot decode message definition '{msgdefcode}' ({exc})")
+                _LOGGER.warning("Cannot decode message definition %r (%s)", msgdefcode, exc)
         # Sort
         self.msgdefs.clear()
         for msgdef in sorted(msgdefs, key=lambda msgdef: (msgdef.circuit, msgdef.name)):
@@ -245,7 +245,7 @@ class Ebus:
             CommandError: If command failed
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.info(f"read({msgdef!r}, ttl={ttl!r}), setprio={ttl!r}")
+        _LOGGER.info("read(%r, ttl=%r), setprio=%r", msgdef, ttl, setprio)
         if setprio:
             msgdef = msgdef.replace(setprio=resolve_prio(msgdef, setprio))
         return await self._async_read(msgdef, ttl)
@@ -268,14 +268,14 @@ class Ebus:
             ConnectionRefusedError: If connection cannot be established
             ConnectionError: On connection breakdown.
         """
-        _LOGGER.info(f"write({msgdef!r}, value={value!r}, ttl={ttl!r})")
+        _LOGGER.info("write(%r, value=%r, ttl=%r)", msgdef, value, ttl)
         if not msgdef.write:
-            raise ValueError(f"Message is not writeable '{msgdef}'")
+            raise ValueError(f"Message is not writeable {msgdef}")
         fullmsgdef = self.msgdefs.get(msgdef.circuit, msgdef.name)
         if len(fullmsgdef.children) != len(msgdef.children):
             # Read
             if not msgdef.read:
-                raise ValueError(f"Message is not read-modify-writable '{msgdef}'")
+                raise ValueError(f"Message is not read-modify-writable {msgdef}")
             await self.connection.async_request("read", msgdef.name, c=msgdef.circuit, m=ttl)
             line = await self.connection.async_readresp(check=False)
             values = line.split(";")
@@ -309,7 +309,7 @@ class Ebus:
             CommandError: If command failed
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.info(f"listen(msgdefs={msgdefs!r})")
+        _LOGGER.info("listen(msgdefs=%r)", msgdefs)
         async for msg in self._async_listen(msgdefs):
             yield msg
 
@@ -334,7 +334,7 @@ class Ebus:
             CommandError: If command failed
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.info(f"observe(msgdefs={msgdefs!r}, ttl={ttl!r}, setprio={setprio!r})")
+        _LOGGER.info("observe(msgdefs=%r, ttl=%r, setprio=%r)", msgdefs, ttl, setprio)
         msgdefs = msgdefs or self.msgdefs
         data = collections.defaultdict(lambda: None)
 
