@@ -12,7 +12,7 @@ from .common import (
 
 def parse_args(subparsers):
     """Parse Arguments."""
-    parser = subparsers.add_parser("listen", help="Listen on the bus, decode messages and and print")
+    parser = subparsers.add_parser("listen", help="Listen on the bus, decode messages and print")
     add_msgdef_args(parser)
     add_patterns_arg(parser, opt=True)
     parser.set_defaults(main=_main)

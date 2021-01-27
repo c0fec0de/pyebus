@@ -16,6 +16,7 @@ class Connection:
         host (str): Hostname or IP
         port (int): Port
         autoconnect (bool): Automatically connect and re-connect
+        timeout (int): Connection Timeout
     """
 
     def __init__(self, host=DEFAULT_HOST, port=DEFAULT_PORT, autoconnect=False, timeout=DEFAULT_TIMEOUT):

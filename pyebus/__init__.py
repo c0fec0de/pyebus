@@ -25,23 +25,16 @@ __version__ = importlib_metadata.version(__name__)
 
 from . import types
 from .circuitinfo import CircuitInfo
-from .circuitmap import CircuitMap  # noqa
-from .connection import CommandError  # noqa
-from .connection import Connection  # noqa
-from .connection import Shutdown  # noqa
-from .const import AUTO  # noqa
-from .const import NA  # noqa
-from .const import OK  # noqa
+from .circuitmap import CircuitMap
+from .connection import CommandError, Connection, Shutdown
+from .const import AUTO, NA, OK
+from .dummyconnection import DummyConnection
+from .dummydata import DummyData
 from .dummyserver import DummyServer
-from .ebus import Ebus  # noqa
-from .icon import get_icon  # noqa
-from .msg import BrokenMsg  # noqa
-from .msg import Field  # noqa
-from .msg import Msg  # noqa
-from .msgdecoder import UnknownMsgError  # noqa
-from .msgdef import FieldDef  # noqa
-from .msgdef import MsgDef  # noqa
-from .msgdef import VirtFieldDef  # noqa
-from .msgdef import resolve_prio  # noqa
-from .msgdefs import MsgDefs  # noqa
+from .ebus import Ebus
+from .icon import get_icon
+from .msg import BrokenMsg, Field, Msg
+from .msgdecoder import UnknownMsgError
+from .msgdef import FieldDef, MsgDef, VirtFieldDef, resolve_prio
+from .msgdefs import MsgDefs
 from .prioritizer import Prioritizer
