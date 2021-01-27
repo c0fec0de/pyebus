@@ -2,7 +2,7 @@
 
 
 class DummyData:
-    """Dummy Data."""
+    """Dummy Data Container."""
 
     def __init__(self):
         self.info = [

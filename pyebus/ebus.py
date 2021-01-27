@@ -6,8 +6,9 @@ import logging
 from .circuitinfodecoder import decode_circuitinfos
 from .connection import CommandError, Connection
 from .const import DEFAULT_HOST, DEFAULT_PORT, DEFAULT_SCANINTERVAL, DEFAULT_SCANS, DEFAULT_TIMEOUT, OK
+from .exceptions import UnknownMsgError
 from .msg import BrokenMsg, filter_msg
-from .msgdecoder import MsgDecoder, UnknownMsgError
+from .msgdecoder import MsgDecoder
 from .msgdef import resolve_prio
 from .msgdefdecoder import decode_msgdef
 from .msgdefs import MsgDefs
@@ -31,7 +32,7 @@ class Ebus:
         timeout (int): Connection Timeout on connect and write.
         scaninterval (str): EBUSD scan - check interval
         scans (str): EBUSD scan - number of intervals
-        circuitinfos (list): List with :any:`CircuitInfo`s
+        circuitinfos (list): List with :any:`CircuitInfo` instances
         msgdefcodes (list): EBUSD Message Definition Codes
         msgdefs (MsgDefs): Message Definitions
     """

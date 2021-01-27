@@ -3,6 +3,7 @@ import asyncio
 import logging
 
 from .const import DEFAULT_HOST, DEFAULT_PORT, DEFAULT_TIMEOUT
+from .exceptions import CommandError, Shutdown
 from .util import repr_
 
 _LOGGER = logging.getLogger(__name__)
@@ -193,13 +194,3 @@ class Connection:
         else:
             result = await task
         return result
-
-
-class CommandError(RuntimeError):
-
-    """Command Error raised in case of EBUSD error, typically if the response starts with `ERR:`"""
-
-
-class Shutdown(ConnectionError):
-
-    """EBUS Shutdown."""

@@ -3,6 +3,7 @@ import collections
 import logging
 from datetime import datetime, timedelta
 
+from .exceptions import UnknownMsgError
 from .msgdef import resolve_prio
 
 _LOGGER = logging.getLogger(__name__)
@@ -11,12 +12,13 @@ _LOGGER = logging.getLogger(__name__)
 class Prioritizer:
 
     """
-    Prioritizer, creating best prio according to message change interval.
+    Prioritizer which creates recommended message polling priority according to message change interval.
 
     Prio 1 is highest.
     The number of priorities is defined by the number of thresholds + 1.
 
     Args:
+        msgdefs (MsgDefs): Message Definitions
         thresholds: Iterable with seconds or :any:`timedelta` between priority levels.
     Keyword Args:
         intervals: Number of intervals the message update rate need to deviate in a row to get a new prio.
@@ -39,7 +41,7 @@ class Prioritizer:
 
     @property
     def thresholds(self):
-        """Thresholds."""
+        """Tuple of timedelta objects with define the time thresholds for each priority."""
         return self._thresholds
 
     @property
@@ -82,8 +84,15 @@ class Prioritizer:
             yield msgpriochanges.popitem()[1]
 
     def notify(self, msg):
-        """Notify about received message."""
+        """
+        Notify about received message.
+
+        Raise:
+            UnknownMsgError
+        """
         msgdef = msg.msgdef
+        if not self._msgdefs.get_ident(msgdef.ident):
+            raise UnknownMsgError(f"circuit={msgdef.circuit}, name={msgdef.name}")
         if msg.valid and msgdef.read:
             msgtimestamps = self._msgtimestamps
             ident = msg.ident

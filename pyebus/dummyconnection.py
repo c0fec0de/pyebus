@@ -11,12 +11,14 @@ _LOGGER = logging.getLogger(__name__)
 
 class DummyConnection(Connection, Dummy):
     """
-    EBUS Connection.
+    Dummy EBUS Connection.
 
     Keyword Args:
         host (str): Hostname or IP
         port (int): Port
         autoconnect (bool): Automatically connect and re-connect
+        timeout (int): Connection Timeout
+        dummydata (DummyData): storage for responses
     """
 
     def __init__(

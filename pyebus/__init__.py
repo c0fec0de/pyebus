@@ -11,6 +11,9 @@ Overview
 * :any:`MsgDefs`: is a container for message definitions (:any:`MsgDef`).
 * :any:`types`: contains the type engine, which allows the simple decode and
   encode of EBUSD values to/from python values.
+* :any:`DummyConnection` emulates a connection. It answers requests by delegating to :any:`Dummy`.
+* :any:`DummyServer` emulates an entire EBUS-daemon by delegating to :any:`Dummy`.
+* :any:`Dummy` with :any:`DummyData` which emulates a minimal set of EBUS functions, for basic testing and trials.
 
 All other classes and methods are just helper.
 
@@ -32,9 +35,9 @@ from .dummyconnection import DummyConnection
 from .dummydata import DummyData
 from .dummyserver import DummyServer
 from .ebus import Ebus
+from .exceptions import UnknownMsgError
 from .icon import get_icon
 from .msg import BrokenMsg, Field, Msg
-from .msgdecoder import UnknownMsgError
 from .msgdef import FieldDef, MsgDef, VirtFieldDef, resolve_prio
 from .msgdefs import MsgDefs
 from .prioritizer import Prioritizer

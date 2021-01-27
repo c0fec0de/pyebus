@@ -2,6 +2,7 @@
 import re
 
 from .const import NA
+from .exceptions import UnknownMsgError
 from .msg import BrokenMsg, Field, Msg
 
 
@@ -79,8 +80,3 @@ class MsgDecoder:
             virtfieldvalue = virtfielddef.func(fields)
             fields.append(Field(virtfielddef, virtfieldvalue))
         return fields
-
-
-class UnknownMsgError(RuntimeError):
-
-    """Exception raised in case of unknown Message."""

@@ -133,8 +133,8 @@ envlist = py
 whitelist_externals = poetry
 commands =
     poetry install -v
-    poetry run isort . --check
-    poetry run black . --check
+    poetry run isort .
+    poetry run black .
     poetry run coverage erase
     poetry run coverage run -m pytest --doctest-modules --log-level=DEBUG -vv
     poetry run coverage report
