@@ -85,6 +85,7 @@ class DummyData:
             "bai FlowTemp = 0.125;ok",
             "bai FlowTemp = 1.125;ok",
             "bai FlowTemp = 2.125;ok",
+            "bai FlowTemp = ",
             "bai FlowTemp = broken;-",
             "bai FlowTemp2 = broken;-",
             "bai FlowTemp = 3.125;ok",

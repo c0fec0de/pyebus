@@ -22,9 +22,7 @@ class Dummy:
         self.dummydata = dummydata or DummyData()
         self.data = collections.defaultdict(lambda: 0)
         self.prios = {}
-
-    def __repr__(self):
-        return "<Dummy>"
+        self.notwriteable = []
 
     def respond(self, request):
         """Iterate over response for `request`."""
@@ -56,8 +54,11 @@ class Dummy:
             yield str(self.data[(circuit, name)])
         elif request.startswith("write -c "):
             (circuit, name, value) = request[len("write -c ") :].split(" ")
-            self.data[(circuit, name)] = value
-            yield "done"
+            if (circuit, name) not in self.notwriteable:
+                self.data[(circuit, name)] = value
+                yield "done"
+            else:
+                yield "ERR: not writable"
         elif request == "listen":
             if self.dummydata.listen:
                 yield "listen started"

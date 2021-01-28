@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyebus"
-version = "1.2.0"
+version = "1.2.1"
 description = "Pythonic Interface to EBUS Daemon (ebusd)"
 authors = [
   "c0fec0de <c0fec0de@gmail.com>"

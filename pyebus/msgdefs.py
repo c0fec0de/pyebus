@@ -21,7 +21,7 @@ class Pattern(collections.namedtuple("Pattern", "circuit name setprio fieldname"
             circuit, name, _, setprio, _, fieldname = mat.groups()
             return Pattern(circuit, name, setprio, fieldname)
         else:
-            return None
+            raise ValueError(f"Invalid pattern {pattern!r}")
 
 
 class MsgDefs:
@@ -91,9 +91,7 @@ class MsgDefs:
             MsgDef: Message Definition
         """
         pat = Pattern.from_str(ident)
-        if pat:
-            return self.get(pat.circuit, pat.name)
-        return None
+        return self.get(pat.circuit, pat.name)
 
     def find(self, circuit, name="*"):
         """
@@ -128,24 +126,21 @@ class MsgDefs:
 
     def _resolve(self, pattern):
         pat = Pattern.from_str(pattern)
-        if pat:
-            circuit, name, setprio, fieldname = pat
-            for msgdef in self.find(circuit, name):
-                if fieldname is None:
-                    fields = msgdef.children
-                else:
-                    fields = tuple(
-                        fielddef for fielddef in msgdef.children if fnmatch(fielddef.name.lower(), fieldname.lower())
-                    )
-                if not fields:
-                    continue
-                if fields == msgdef.children and (setprio is None or not msgdef.read):
-                    yield msgdef
-                else:
-                    setprio = setprio if setprio in (AUTO, None) else int(setprio)
-                    yield msgdef.replace(children=fields, setprio=setprio)
-        else:
-            raise ValueError(f"Invalid pattern {pattern!r}")
+        circuit, name, setprio, fieldname = pat
+        for msgdef in self.find(circuit, name):
+            if fieldname is None:
+                fields = msgdef.children
+            else:
+                fields = tuple(
+                    fielddef for fielddef in msgdef.children if fnmatch(fielddef.name.lower(), fieldname.lower())
+                )
+            if not fields:
+                continue
+            if fields == msgdef.children and (setprio is None or not msgdef.read):
+                yield msgdef
+            else:
+                setprio = setprio if setprio in (AUTO, None) else int(setprio)
+                yield msgdef.replace(children=fields, setprio=setprio)
 
     def set_defaultprio(self, defaultprio):
         """Set Priorities of all messages without a priority value."""

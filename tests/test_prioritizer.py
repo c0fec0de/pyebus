@@ -1,7 +1,9 @@
 from datetime import timedelta
 from time import sleep
 
-from pyebus import Field, FieldDef, Msg, MsgDef, MsgDefs, Prioritizer, types
+import pytest
+
+from pyebus import Field, FieldDef, Msg, MsgDef, MsgDefs, Prioritizer, UnknownMsgError, types
 
 
 def _init():
@@ -114,3 +116,14 @@ def test_notify_init():
     assert p.get_prio(md) == 4
     p.notify(m0)
     assert p.get_prio(md) == 3
+
+
+def test_unknown():
+    """Initilize Notify by setprio."""
+    fd = FieldDef(0, "temp", types.IntType(-127, 128))
+    md = MsgDef("circuit", "name", [fd], read=True, setprio=5)
+    msgdefs = MsgDefs()
+    m = Msg(md, [Field(fd, 3)])
+    p = Prioritizer(msgdefs, (0.01, 0.03), intervals=1)
+    with pytest.raises(UnknownMsgError):
+        p.notify(m)

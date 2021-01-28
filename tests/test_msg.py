@@ -44,3 +44,8 @@ def test_filter_msg():
     assert pyebus.msg.filter_msg(b, [msgdef0]) is b
     assert pyebus.msg.filter_msg(b) is b
     assert pyebus.msg.filter_msg(None) is None
+
+    assert msg01.values == ("4", "5")
+    assert msg0.values == ("4",)
+    assert msg5.values == ("5",)
+    assert b.values == tuple()

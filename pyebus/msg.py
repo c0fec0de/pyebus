@@ -107,4 +107,4 @@ class BrokenMsg:
     @property
     def values(self):
         """Values."""
-        return []
+        return tuple()

@@ -78,6 +78,7 @@ def test_online():
         assert await ebus.async_is_online()
         info = dict(line.split(": ", 1) for line in server.dummydata.info)
         assert await ebus.async_get_info() == info
+        await ebus.connection.async_disconnect()
 
     run(test, server=server)
 
@@ -88,15 +89,12 @@ def test_cmd():
     ebus = pyebus.Ebus(port=UNUSED_PORT)
 
     async def test():
-        lines = []
-        async for line in ebus.async_cmd("state"):
-            lines.append(line)
-        assert lines == [server.dummydata.state]
+        assert [line async for line in ebus.async_cmd("state")] == [server.dummydata.state]
 
-        lines = []
-        async for line in ebus.async_cmd("unknown"):
-            lines.append(line)
-        assert lines == ["ERR: command not found"]
+        assert [line async for line in ebus.async_cmd("unknown")] == ["ERR: command not found"]
+
+        # Dummy-Only Command
+        assert [line async for line in ebus.async_cmd("stop")] == ["stopping"]
 
     run(test, server=server)
 
@@ -171,6 +169,11 @@ def test_read_write():
         with pytest.raises(ValueError):
             await ebus.async_write(msgdef, 5)
 
+        server.notwriteable.append(("bai", "FanPWMSum"))
+        msgdef = ebus.msgdefs.get("bai", "FanPWMSum")
+        with pytest.raises(pyebus.CommandError):
+            await ebus.async_write(msgdef, 5)
+
     run(test, server=server)
 
 
@@ -225,6 +228,7 @@ def test_observe():
             ("bai/FlowTemp", (0.125, "ok", 0.125)),
             ("bai/FlowTemp", (1.125, "ok", 1.125)),
             ("bai/FlowTemp", (2.125, "ok", 2.125)),
+            ("bai/FlowTemp", (None, pyebus.NA, pyebus.NA)),
             ("bai/FlowTemp", (None, None, None)),
             ("bai/FlowTemp", (3.125, "ok", 3.125)),
         ]
@@ -252,6 +256,7 @@ def test_observe_filter():
             ("bai/FlowTemp", (0.125, "ok", 0.125)),
             ("bai/FlowTemp", (1.125, "ok", 1.125)),
             ("bai/FlowTemp", (2.125, "ok", 2.125)),
+            ("bai/FlowTemp", (None, pyebus.NA, pyebus.NA)),
             ("bai/FlowTemp", (None, None, None)),
             ("bai/FlowTemp", (3.125, "ok", 3.125)),
         ]

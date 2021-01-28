@@ -1,5 +1,6 @@
 import asyncio
 import copy
+from unittest.mock import patch
 
 import pytest
 
@@ -8,16 +9,47 @@ import pyebus
 from .util import run
 
 
-def init():
-    dummydata = pyebus.DummyData()
-    ebus = pyebus.Ebus()
-    ebus.connection = pyebus.DummyConnection(autoconnect=True, dummydata=dummydata)
-    return ebus, ebus.connection, dummydata
+def test_connect():
+    """Connection succeed."""
+    con = pyebus.DummyConnection()
+
+    async def test():
+        assert con.is_connected() == False
+        await con.async_connect()
+        assert con.is_connected() == True
+        await con.async_disconnect()
+        assert con.is_connected() == False
+        await con.async_disconnect()
+        assert con.is_connected() == False
+
+    run(test)
 
 
+def test_notconnected():
+    """Not Connected."""
+    con = pyebus.DummyConnection()
+
+    async def test():
+        with pytest.raises(ConnectionError):
+            await con.async_write("state")
+
+    run(test)
+
+
+def test_command_error():
+    """CommandError."""
+    con = pyebus.DummyConnection()
+
+    async def test():
+        with pytest.raises(pyebus.CommandError):
+            await con.async_write("unknown")
+
+
+@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
 def test_nosignal():
     """No signal."""
-    ebus, _, dummydata = init()
+    ebus = pyebus.Ebus()
+    dummydata = ebus.connection.dummydata
     dummydata.state = "no signal"
 
     async def test():
@@ -27,9 +59,11 @@ def test_nosignal():
     run(test)
 
 
+@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
 def test_online():
     """Online."""
-    ebus, _, dummydata = init()
+    ebus = pyebus.Ebus()
+    dummydata = ebus.connection.dummydata
 
     async def test():
         assert await ebus.async_get_state() == pyebus.OK
@@ -40,27 +74,29 @@ def test_online():
     run(test)
 
 
+@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
 def test_cmd():
     """Cmd."""
-    ebus, _, dummydata = init()
+    ebus = pyebus.Ebus()
+
+    dummydata = ebus.connection.dummydata
 
     async def test():
-        lines = []
-        async for line in ebus.async_cmd("state"):
-            lines.append(line)
+        lines = [line async for line in ebus.async_cmd("state")]
         assert lines == [dummydata.state]
 
-        lines = []
-        async for line in ebus.async_cmd("unknown"):
-            lines.append(line)
+        lines = [line async for line in ebus.async_cmd("unknown")]
         assert lines == ["ERR: command not found"]
 
     run(test)
 
 
+@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
+@patch("pyebus.const.DEFAULT_SCANINTERVAL", 0)
 def test_running():
     """Running."""
-    ebus, _, dummydata = init()
+    ebus = pyebus.Ebus()
+    dummydata = ebus.connection.dummydata
     ebus.scaninterval = 0.1
 
     async def test():
@@ -102,11 +138,11 @@ def test_running():
     run(test)
 
 
+@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
 def test_read_write():
     """Read Write."""
-    ebus, dummy, dummydata = init()
-
-    dummy.data[("bai", "FlowTemp")] = "0;cutoff;0"
+    ebus = pyebus.Ebus()
+    ebus.connection.data[("bai", "FlowTemp")] = "0;cutoff;0"
 
     async def test():
         await ebus.async_load_msgdefs()
@@ -118,7 +154,7 @@ def test_read_write():
         msg = await ebus.async_read(msgdef, setprio=pyebus.AUTO)
         assert msg.values == (0.0, "ok", 0.0)
 
-        assert dummy.prios == {("bai", "FlowTemp"): "2"}
+        assert ebus.connection.prios == {("bai", "FlowTemp"): "2"}
 
         msgdef = ebus.msgdefs.get("bai", "FanPWMSum")
         await ebus.async_write(msgdef, 5)

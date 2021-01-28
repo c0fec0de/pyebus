@@ -29,6 +29,10 @@ def test_msgdefs0():
 
     assert msgdefs.get("bai", "foo") is None
     assert msgdefs.get("bar", "foo") is None
+    assert msgdefs.get_ident("cc/StatPowerOn") == MsgDef(
+        "cc", "StatPowerOn", (FieldDef(0, "", IntType(0, 65534)),), read=True
+    )
+    assert msgdefs.get_ident("cc/StatPowerOff") is None
 
     assert len(msgdefs.find("?c")) == 132
     assert list(msgdefs.find("cc", "StatPowerOn")) == [

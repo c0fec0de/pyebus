@@ -1,7 +1,7 @@
 import pathlib
 import sys
 
-from pyebus import MsgDefs, UnknownMsgError
+from pyebus import FieldDef, MsgDef, MsgDefs, UnknownMsgError, types
 from pyebus.msgdecoder import MsgDecoder
 from pyebus.msgdefdecoder import decode_msgdef
 
@@ -59,3 +59,17 @@ def _test(deffilepath, basepath, num):
 
     # compare
     cmp_(outfilepath, reffilepath)
+
+
+def test_noidx():
+    msgdef = MsgDef(
+        "cc",
+        "StatPowerOn",
+        (FieldDef(None, "foo", types.IntType(0, 65534)), FieldDef(0, "foo", types.IntType(0, 65534))),
+        read=True,
+    )
+    msgdefs = MsgDefs()
+    msgdefs.add(msgdef)
+    decoder = MsgDecoder(msgdefs)
+    msg = decoder.decode_line("cc StatPowerOn = 55")
+    assert msg.values == (55,)

@@ -49,6 +49,8 @@ class Ebus:
         "_circuitinfomap",
     )
 
+    Connector = Connection
+
     def __init__(
         self,
         host=DEFAULT_HOST,
@@ -61,7 +63,7 @@ class Ebus:
         msgdefs=None,
     ):
         self._circuitinfomap = {}
-        self.connection = Connection(host=host, port=port, autoconnect=True, timeout=timeout)
+        self.connection = self.Connector(host=host, port=port, autoconnect=True, timeout=timeout)
         self.scaninterval = scaninterval
         self.scans = scans
         self.msgdefcodes = msgdefcodes or []
@@ -169,7 +171,8 @@ class Ebus:
             cnts.append(cnt)
             if len(cnts) < self.scans or not all(cnt == cnts[-1] for cnt in cnts[-self.scans : -1]):
                 await asyncio.sleep(self.scaninterval)
-            else:
+            else:  # pragma: no cover
+                # not properly collected during coverage analysis
                 break
 
     async def async_load_msgdefs(self):
@@ -202,13 +205,12 @@ class Ebus:
         await self.connection.async_request(_CMD_FINDMSGDEFS)
         async for line in self.connection.async_read():
             line = line.strip()
-            if line:
-                try:
-                    msgdef = decode_msgdef(line)
-                except ValueError as exc:
-                    _LOGGER.warning("Cannot decode message definition %r (%s)", line, exc)
-                if not msgdef.circuit.startswith("scan"):
-                    msgdefcodes.append(line)
+            try:
+                msgdef = decode_msgdef(line)
+            except ValueError as exc:
+                _LOGGER.warning("Cannot decode message definition %r (%s)", line, exc)
+            if not msgdef.circuit.startswith("scan"):
+                msgdefcodes.append(line)
 
     def decode_msgdefcodes(self):
         """Decode `msgdefcodes` and use as `msgdefs`."""
