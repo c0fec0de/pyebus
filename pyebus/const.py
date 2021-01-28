@@ -20,6 +20,4 @@ NA = _NotAvailable()
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8888
 DEFAULT_TIMEOUT = 10
-DEFAULT_SCANINTERVAL = 10
-DEFAULT_SCANS = 3
 DEFAULT_PRIOTHRESHOLDS = [timedelta(hours=1), timedelta(hours=4), timedelta(days=1)]
