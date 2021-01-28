@@ -49,23 +49,25 @@ class Ebus:
         "_circuitinfomap",
     )
 
-    Connector = Connection
+    CONNECTOR = Connection
+    DEFAULT_SCANINTERVAL = 10
+    DEFAULT_SCANS = 3
 
     def __init__(
         self,
         host=DEFAULT_HOST,
         port=DEFAULT_PORT,
         timeout=DEFAULT_TIMEOUT,
-        scaninterval=DEFAULT_SCANINTERVAL,
-        scans=DEFAULT_SCANS,
+        scaninterval=None,
+        scans=None,
         circuitinfos=None,
         msgdefcodes=None,
         msgdefs=None,
     ):
         self._circuitinfomap = {}
-        self.connection = self.Connector(host=host, port=port, autoconnect=True, timeout=timeout)
-        self.scaninterval = scaninterval
-        self.scans = scans
+        self.connection = self.CONNECTOR(host=host, port=port, autoconnect=True, timeout=timeout)
+        self.scaninterval = scaninterval or self.DEFAULT_SCANINTERVAL
+        self.scans = scans or self.DEFAULT_SCANS
         self.msgdefcodes = msgdefcodes or []
         self._msgdecoder = MsgDecoder(msgdefs or MsgDefs())
         self.circuitinfos = circuitinfos or []

@@ -45,7 +45,7 @@ def test_command_error():
             await con.async_write("unknown")
 
 
-@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
+@patch("pyebus.Ebus.CONNECTOR", pyebus.DummyConnection)
 def test_nosignal():
     """No signal."""
     ebus = pyebus.Ebus()
@@ -59,7 +59,7 @@ def test_nosignal():
     run(test)
 
 
-@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
+@patch("pyebus.Ebus.CONNECTOR", pyebus.DummyConnection)
 def test_online():
     """Online."""
     ebus = pyebus.Ebus()
@@ -74,7 +74,7 @@ def test_online():
     run(test)
 
 
-@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
+@patch("pyebus.Ebus.CONNECTOR", pyebus.DummyConnection)
 def test_cmd():
     """Cmd."""
     ebus = pyebus.Ebus()
@@ -91,8 +91,8 @@ def test_cmd():
     run(test)
 
 
-@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
-@patch("pyebus.const.DEFAULT_SCANINTERVAL", 0)
+@patch("pyebus.Ebus.CONNECTOR", pyebus.DummyConnection)
+@patch("pyebus.Ebus.DEFAULT_SCANINTERVAL", 0)
 def test_running():
     """Running."""
     ebus = pyebus.Ebus()
@@ -138,7 +138,7 @@ def test_running():
     run(test)
 
 
-@patch("pyebus.Ebus.Connector", pyebus.DummyConnection)
+@patch("pyebus.Ebus.CONNECTOR", pyebus.DummyConnection)
 def test_read_write():
     """Read Write."""
     ebus = pyebus.Ebus()
