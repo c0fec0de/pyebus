@@ -4,8 +4,8 @@
 .. image:: https://img.shields.io/pypi/dm/pyebus.svg?label=pypi%20downloads
    :target: https://pypi.python.org/pypi/pyebus
 
-.. image:: https://travis-ci.org/c0fec0de/pyebus.svg?branch=master
-    :target: https://travis-ci.org/c0fec0de/pyebus
+.. image:: https://travis-ci.com/c0fec0de/pyebus.svg?branch=main
+    :target: https://travis-ci.com/github/c0fec0de/pyebus
 
 .. image:: https://readthedocs.org/projects/pyebus/badge/?version=latest
     :target: https://pyebus.readthedocs.io/en/latest/?badge=latest
