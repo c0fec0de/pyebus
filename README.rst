@@ -10,9 +10,6 @@
 .. image:: https://readthedocs.org/projects/pyebus/badge/?version=latest
     :target: https://pyebus.readthedocs.io/en/latest/?badge=latest
 
-.. image:: https://codeclimate.com/github/c0fec0de/pyebus.png
-    :target: https://codeclimate.com/github/c0fec0de/pyebus
-
 .. image:: https://img.shields.io/pypi/pyversions/pyebus.svg
    :target: https://pypi.python.org/pypi/pyebus
 
