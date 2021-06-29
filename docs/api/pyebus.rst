@@ -28,6 +28,7 @@ Submodules
    pyebus.msgdef
    pyebus.msgdefdecoder
    pyebus.msgdefs
+   pyebus.na
    pyebus.prioritizer
    pyebus.typedecoder
    pyebus.types

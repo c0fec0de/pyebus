@@ -5,7 +5,7 @@ import logging
 
 from .circuitinfodecoder import decode_circuitinfos
 from .connection import CommandError, Connection
-from .const import DEFAULT_HOST, DEFAULT_PORT, DEFAULT_SCANINTERVAL, DEFAULT_SCANS, DEFAULT_TIMEOUT, OK
+from .const import DEFAULT_HOST, DEFAULT_PORT, DEFAULT_TIMEOUT, OK
 from .exceptions import UnknownMsgError
 from .msg import BrokenMsg, filter_msg
 from .msgdecoder import MsgDecoder
@@ -80,8 +80,8 @@ class Ebus:
                 ("host", self.host, DEFAULT_HOST),
                 ("port", self.port, DEFAULT_PORT),
                 ("timeout", self.timeout, DEFAULT_TIMEOUT),
-                ("scaninterval", self.scaninterval, DEFAULT_SCANINTERVAL),
-                ("scans", self.scans, DEFAULT_SCANS),
+                ("scaninterval", self.scaninterval, self.DEFAULT_SCANINTERVAL),
+                ("scans", self.scans, self.DEFAULT_SCANS),
             ),
         )
 

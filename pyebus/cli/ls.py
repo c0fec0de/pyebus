@@ -53,4 +53,4 @@ def _parse_type(type_):
 def _filter_type(msgdef, type_):
     read, write, update = type_
     pairs = ((msgdef.read, read), (msgdef.write, write), (msgdef.update, update))
-    return all([(exp is None or val == exp) for val, exp in pairs])
+    return all((exp is None or val == exp) for val, exp in pairs)

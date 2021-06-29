@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyebus"
-version = "1.2.2"
+version = "1.2.4"
 description = "Pythonic Interface to EBUS Daemon (ebusd)"
 authors = [
   "c0fec0de <c0fec0de@gmail.com>"
@@ -136,7 +136,7 @@ commands =
     poetry run isort .
     poetry run black .
     poetry run coverage erase
-    poetry run coverage run -m pytest --doctest-modules --log-level=DEBUG -vv
+    poetry run coverage run -m pytest --doctest-modules --log-level=DEBUG -vv --doctest-ignore-import-errors
     poetry run coverage report
     poetry run coverage html
     poetry run pylint pyebus
