@@ -50,10 +50,13 @@ def decode_msgdef(line):
 
 def _split(line):
     values = []
-    regex = re.compile(r'("([^"]+)")|([^\,]*),')
+    regex = re.compile(r'"([^"]+)"(,|$)|([^\,]*)(,|$)')
     for mat in regex.finditer(line):
         groups = mat.groups()
-        values.append(groups[1] or groups[2])
+        values.append(groups[0] or groups[2])
+        # we don't want the empty match at the end of line if we already
+        # consumed a non-empty entry after the last colon
+        if (groups[1] or groups[3] or '') == '': break
     return values
 
 
