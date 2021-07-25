@@ -38,6 +38,9 @@ def decode_msgdef(line):
     """
     try:
         values = _split(line)
+        # Workaround for definitions of internal messages like
+        # w,broadcast,id,
+        if len(values) == 4 and values[3] == '': values = values[:3]
         type_, circuit, name = values[:3]  # pylint: disable=W0632
         read, prio, write, update = decodetype(type_)
         children = _decodefields(values[3:])
