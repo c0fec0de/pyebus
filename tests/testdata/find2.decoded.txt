@@ -1,0 +1,13 @@
+
+w,broadcast,id,
+MsgDef('broadcast', 'id', write=True)
+
+r,ehp,TimeBetweenTwoCompStartsMin,seconds,s,ULG,2,s,"calculated from menu item ""compressor starts per hour"" in 0,5s steps"
+MsgDef('ehp', 'TimeBetweenTwoCompStartsMin', read=True)
+    FieldDef(0, 'seconds', IntType(0, 2147483647, divider=2), unit='s', comment='calculated from menu item "compressor starts per hour" in 0,5s steps')
+
+u,ehp,SourceTempInput,,s,IGN:2,,,,temp,s,D2C,,°C,"Quellentemperatur: Wärmequellentemperatur am Eintritt zurWärmepumpe, T3",sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
+MsgDef('ehp', 'SourceTempInput', update=True)
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='Quellentemperatur: Wärmequellentemperatur am Eintritt zurWärmepumpe, T3')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')), comment='Fühlerstatus')
+    VirtFieldDef('temp+sensor', IntType(-2047.9, 2047.9, divider=16))
