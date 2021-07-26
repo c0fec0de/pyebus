@@ -220,7 +220,13 @@ def test_observe():
             ("bai/FanPWMSum", (0,)),
             ("bai/FanPWMTest", (0,)),
             # ("bai/FlowTemp", (0.0, pyebus.NA, pyebus.NA)),
-            ("bai/FlowTemp", (0.0, pyebus.NA,)),
+            (
+                "bai/FlowTemp",
+                (
+                    0.0,
+                    pyebus.NA,
+                ),
+            ),
             ("bai/averageIgnitiontime", (0.0,)),
             ("bai/dcfState", (0,)),
             ("bai/extWP", (0,)),

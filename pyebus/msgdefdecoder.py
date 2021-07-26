@@ -40,7 +40,8 @@ def decode_msgdef(line):
         values = _split(line)
         # Workaround for definitions of internal messages like
         # w,broadcast,id,
-        if len(values) == 4 and values[3] == '': values = values[:3]
+        if len(values) == 4 and values[3] == "":
+            values = values[:3]
         type_, circuit, name = values[:3]  # pylint: disable=W0632
         read, prio, write, update = decodetype(type_)
         children = _decodefields(values[3:])
@@ -59,7 +60,8 @@ def _split(line):
         values.append(groups[0].replace('""', '"') if groups[0] else groups[3])
         # we don't want the empty match at the end of line if we already
         # consumed a non-empty entry after the last colon
-        if (groups[2] or groups[4] or '') == '': break
+        if (groups[2] or groups[4] or "") == "":
+            break
     return values
 
 
