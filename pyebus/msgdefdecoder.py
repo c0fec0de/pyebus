@@ -34,7 +34,7 @@ def decode_msgdef(line):
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.children
-    (FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C'),)
+    (FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='Temperatur'),)
     """
     try:
         values = _split(line)
