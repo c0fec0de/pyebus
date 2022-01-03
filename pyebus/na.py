@@ -18,8 +18,5 @@ class NotAvailable:
     def __repr__(self):
         return "NA"
 
-    def __bool__(self):
-        return False
-
 
 NA = NotAvailable()

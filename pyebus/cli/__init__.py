@@ -56,5 +56,5 @@ def main():  # pragma: no cover
         try:
             argvhandler(args)
         except Exception as exc:  # pylint: disable=W0703
-            print("ERROR: %s" % exc)
+            print(f"ERROR: {exc}")
             sys.exit(1)

@@ -14,5 +14,6 @@ def repr_(obj, args=None, kwargs=None):
     if kwargs:
         for key, value, default in kwargs:
             if value != default:
-                args.append("%s=%r" % (key, value))
-    return "%s(%s)" % (classname, ", ".join(args))
+                args.append(f"{key}={value!r}")
+    argsjoined = ", ".join(args)
+    return f"{classname}({argsjoined})"

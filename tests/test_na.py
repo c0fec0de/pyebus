@@ -1,12 +1,10 @@
-import asyncio
-
 import pyebus
 
 
 def test_na():
     """Not Available."""
-    str(pyebus.NA) == "NA"
-    repr(pyebus.NA) == "NA"
+    assert str(pyebus.NA) == "NA"
+    assert repr(pyebus.NA) == "NA"
 
 
 def test_na_cmp():

@@ -6,6 +6,7 @@
 			[
 				".tox",
 				"docs/_build",
+				".venv",
 			],
 			"path": "."
 		}
