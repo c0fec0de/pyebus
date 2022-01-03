@@ -1,5 +1,6 @@
 .coverage
 .tox
+.venv
 __pycache__
 dist
 docs/_build/

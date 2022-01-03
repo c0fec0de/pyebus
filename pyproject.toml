@@ -54,6 +54,7 @@ classifiers = [
 
 [tool.poetry.scripts]
 ebt = "pyebus.cli:main"
+ebustool = "pyebus.cli:main"
 
 [tool.poetry.dependencies]
 python = ">= 3.7, < 4"
@@ -133,8 +134,8 @@ envlist = py
 whitelist_externals = poetry
 commands =
     poetry install -v
-    poetry run isort .
-    poetry run black .
+    poetry run isort pyebus tests
+    poetry run black pyebus tests
     poetry run coverage erase
     poetry run coverage run -m pytest --doctest-modules --log-level=DEBUG -vv --doctest-ignore-import-errors
     poetry run coverage report
