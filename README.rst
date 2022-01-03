@@ -231,3 +231,35 @@ EBUS meta informations are available at:
 .. _EBUSD: https://github.com/john30/ebusd
 .. _EBUSD-Configuration: https://github.com/john30/ebusd-configuration
 .. _API-Documentation: https://pyebus.readthedocs.io/en/latest/api/pyebus.html
+
+
+
+Contribution
+============
+
+* Fork https://github.com/c0fec0de/pyebus
+* Commit Your Changes
+* Test
+* Create Pull Request
+
+Development Environment
+-----------------------
+
+Please ensure to have python3 and venv installed.
+Run these commands to ensure to have the proper test environment::
+
+	python3 -m venv .venv
+	source .venv/bin/activate
+	pip install tox poetry
+
+Testing
+-------
+
+`tox` manages the test execution. Please ensure to enter the environment::
+
+	source .venv/bin/activate
+	tox
+
+See the coverage report at `htmlcov/index.html`.
+
+See the documentation at `docs/_build/html/index.html` 
