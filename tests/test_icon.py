@@ -1,3 +1,4 @@
+import collections
 import pathlib
 
 from pyebus import MsgDefs, get_icon
@@ -22,7 +23,7 @@ def test_msgdefs0():
                 except ValueError as e:
                     pass
 
-    variants = {}
+    variants = collections.OrderedDict()
     for msgdef in msgdefs:
         for fielddef in msgdef.fields:
             k = msgdef.read or msgdef.update, msgdef.write, fielddef.type_, fielddef.unit

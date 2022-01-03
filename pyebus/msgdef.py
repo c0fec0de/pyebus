@@ -207,7 +207,7 @@ class AbstractFieldDef(_FieldDef, NodeMixin):
         return f"{self.msgdef.ident}/{self.name}" if self.msgdef else None
 
     def __copy__(self):
-        return FieldDef(idx=self.idx, name=self.name, type_=self.type_, unit=self.unit)
+        return FieldDef(idx=self.idx, name=self.name, type_=self.type_, unit=self.unit, comment=self.comment)
 
 
 class FieldDef(AbstractFieldDef):

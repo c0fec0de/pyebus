@@ -1,0 +1,3 @@
+w,broadcast,id,
+r,ehp,TimeBetweenTwoCompStartsMin,seconds,s,ULG,2,s,"calculated from menu item ""compressor starts per hour"" in 0,5s steps"
+u,ehp,SourceTempInput,,s,IGN:2,,,,temp,s,D2C,,°C,"Quellentemperatur: Wärmequellentemperatur am Eintritt zurWärmepumpe, T3",sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus

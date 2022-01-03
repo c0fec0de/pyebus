@@ -18,6 +18,11 @@ def test_find1():
     _test(TESTDATAPATH / "find1")
 
 
+def test_find2():
+    """Process `find2.txt`."""
+    _test(TESTDATAPATH / "find2")
+
+
 def _test(basepath):
     infilepath = basepath.with_suffix(".txt")
     outfilepath = basepath.with_suffix(".decoded.gen.txt")

@@ -211,7 +211,7 @@ class Ebus:
                 msgdef = decode_msgdef(line)
             except ValueError as exc:
                 _LOGGER.warning("Cannot decode message definition %r (%s)", line, exc)
-            if not msgdef.circuit.startswith("scan"):
+            if not msgdef or not msgdef.circuit.startswith("scan"):
                 msgdefcodes.append(line)
 
     def decode_msgdefcodes(self):
