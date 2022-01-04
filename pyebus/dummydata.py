@@ -74,7 +74,6 @@ class DummyData:
             "r,bai,ExtStorageModulCon,yesno,s,UCH,0=no;1=yes,,Externes Speichermodul (VR65) angeschlosssen",
             "r,bai,extWP,onoff,s,UCH,0=off;1=on,,Externe Heizungspumpe",
             "r,bai,FanHours,hoursum2,s,UIN,,h,Betriebsstunden des Lüfters",
-            "scan",
             "rw,bai,FlowTemp,temp,s,D2C,,°C,Vorlauftemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus",
             "rw,bai,FanPWMSum,,s,UIN,,,Predictive Maintenance data for the fan damage recognition",
             "r,bai,FanPWMTest,,s,UCH,,,Predictive Maintenance data for the fan damage recognition",

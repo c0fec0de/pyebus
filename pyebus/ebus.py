@@ -192,7 +192,7 @@ class Ebus:
         await self.async_load_msgdefcodes()
         self.decode_msgdefcodes()
 
-    async def async_load_msgdefcodes(self):
+    async def async_load_msgdefcodes(self, add=False):
         """
         Load EBUS Message Definition Codes from EBUSD and store to :any:`msgdefcodes`.
 
@@ -203,7 +203,10 @@ class Ebus:
             Shutdown: On EBUSD shutdown.
         """
         _LOGGER.info("load_msgdefcodes()")
-        self.msgdefcodes = msgdefcodes = []
+        if add:
+            msgdefcodes = self.msgdefcodes
+        else:
+            msgdefcodes = self.msgdefcodes = []
         await self.connection.async_request(_CMD_FINDMSGDEFS)
         async for line in self.connection.async_read():
             line = line.strip()
@@ -211,8 +214,9 @@ class Ebus:
                 msgdef = decode_msgdef(line)
             except ValueError as exc:
                 _LOGGER.warning("Cannot decode message definition %r (%s)", line, exc)
-            if not msgdef or not msgdef.circuit.startswith("scan"):
-                msgdefcodes.append(line)
+            else:
+                if msgdef and not msgdef.circuit.startswith("scan") and line not in msgdefcodes:
+                    msgdefcodes.append(line)
 
     def decode_msgdefcodes(self):
         """Decode `msgdefcodes` and use as `msgdefs`."""
