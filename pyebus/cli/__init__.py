@@ -4,17 +4,43 @@ import asyncio
 import inspect
 import logging
 import sys
+import os
 
 from .. import __version__
 from . import cmd, dummyserver, info, listen, ls, observe, read, state, write
+
+#: environment key for defining default value for ebusd host
+ENV_KEY_EBUSD_HOST = "EBUSD_HOST"
+
+#: environment key for defining default value for ebusd port
+ENV_KEY_EBUSD_PORT = "EBUSD_PORT"
 
 
 def argvhandler(argv):
     """Command Line Interface."""
     parser = argparse.ArgumentParser(prog="ebustool")
 
-    parser.add_argument("--host", "-H", default="127.0.0.1", help="EBUSD address. Default is '127.0.0.1'.")
-    parser.add_argument("--port", "-P", default=8888, type=int, help="EBUSD port. Default is 8888.")
+    default_ebusd_host = "127.0.0.1"
+    default_ebusd_port = 8888
+
+    try:
+        default_ebusd_host = os.environ[ENV_KEY_EBUSD_HOST]
+    except KeyError:
+        pass
+    except Exception:
+        pass
+
+    try:
+        default_ebusd_port = int(os.environ[ENV_KEY_EBUSD_PORT])
+    except KeyError:
+        pass
+    except Exception:
+        print(f"Ignoring invalid port in environment variable {ENV_KEY_EBUSD_PORT}")
+
+    parser.add_argument("--host", "-H", default=default_ebusd_host, help="EBUSD address. Default is '%(default)s'.")
+    parser.add_argument(
+        "--port", "-P", default=default_ebusd_port, type=int, help="EBUSD port. Default is %(default)s."
+    )
     parser.add_argument("--timeout", "-T", default=10, type=int, help="EBUSD connection timeout. Default is 10.")
 
     parser.add_argument("--version", action="version", version=__version__)
