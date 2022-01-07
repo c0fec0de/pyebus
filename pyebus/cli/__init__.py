@@ -27,14 +27,13 @@ def argvhandler(argv):
         default_ebusd_host = os.environ[ENV_KEY_EBUSD_HOST]
     except KeyError:
         pass
-    except Exception:
-        pass
 
+    # pYylint: disable=broad-except
     try:
         default_ebusd_port = int(os.environ[ENV_KEY_EBUSD_PORT])
     except KeyError:
         pass
-    except Exception:
+    except ValueError:
         print(f"Ignoring invalid port in environment variable {ENV_KEY_EBUSD_PORT}")
 
     parser.add_argument("--host", "-H", default=default_ebusd_host, help="EBUSD address. Default is '%(default)s'.")
