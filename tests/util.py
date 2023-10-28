@@ -1,5 +1,5 @@
+"""Utilties."""
 import asyncio
-import collections
 import filecmp
 import os
 import shutil

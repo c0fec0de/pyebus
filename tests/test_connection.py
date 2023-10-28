@@ -1,4 +1,4 @@
-import asyncio
+"""Connection Testing."""
 
 import pytest
 
@@ -14,12 +14,12 @@ def test_connection():
     con = pyebus.Connection()
     assert con.host == "127.0.0.1"
     assert con.port == 8888
-    assert con.autoconnect == False
+    assert con.autoconnect is False
 
     con = pyebus.Connection(host="foo", port=4444, autoconnect=True, timeout=5)
     assert con.host == "foo"
     assert con.port == 4444
-    assert con.autoconnect == True
+    assert con.autoconnect is True
 
     assert repr(con), "Connection(host='foo', port=4444, autoconnect=True, timeout=5)"
 
@@ -29,10 +29,10 @@ def test_connect_fails():
     con = pyebus.Connection(port=UNUSED_PORT)
 
     async def test():
-        assert con.is_connected() == False
+        assert con.is_connected() is False
         with pytest.raises(ConnectionRefusedError):
             await con.async_connect()
-        assert con.is_connected() == False
+        assert con.is_connected() is False
 
     run(test)
 
@@ -43,13 +43,13 @@ def test_connect():
     con = pyebus.Connection(port=server.port, timeout=None)
 
     async def test():
-        assert con.is_connected() == False
+        assert con.is_connected() is False
         await con.async_connect()
-        assert con.is_connected() == True
+        assert con.is_connected() is True
         await con.async_disconnect()
-        assert con.is_connected() == False
+        assert con.is_connected() is False
         await con.async_disconnect()
-        assert con.is_connected() == False
+        assert con.is_connected() is False
 
     run(test, server=server)
 

@@ -110,8 +110,8 @@ class MsgDef(_MsgDef, NodeMixin):
                 other.update,
                 other.setprio,
             )
-        else:
-            return NotImplemented
+
+        return NotImplemented
 
     @property
     def fields(self):
@@ -148,8 +148,8 @@ class MsgDef(_MsgDef, NodeMixin):
                 update=self.update or msgdef.update,
                 setprio=self.setprio or msgdef.setprio,
             )
-        else:
-            return None
+
+        return None
 
     def replace(self, **kwargs):
         """Create copy with updated attributes."""
@@ -289,5 +289,5 @@ def resolve_prio(msgdef, setprio=AUTO):
             else:
                 setprio = 1
         return setprio
-    else:
-        return None
+
+    return None

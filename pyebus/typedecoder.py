@@ -239,5 +239,4 @@ def _get_length(typecode):
     length = typecode.split(":")[1]
     if length != "*":
         return int(length)
-    else:
-        return None
+    return None

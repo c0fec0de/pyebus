@@ -1,4 +1,4 @@
-import asyncio
+"""EBus Interface Testing."""
 import copy
 
 import pytest
@@ -185,7 +185,7 @@ def test_observe():
     async def test():
         await ebus.async_load_msgdefs()
 
-        assert server.prios == {}
+        assert not server.prios
 
         msgs = []
         async for msg in ebus.async_observe(setprio=3):
@@ -279,7 +279,7 @@ def test_listen_broken():
     async def test():
         await ebus.async_load_msgdefs()
         with pytest.raises(pyebus.CommandError):
-            async for msg in ebus.async_listen():
+            async for _ in ebus.async_listen():
                 pass
 
     run(test, server=server)

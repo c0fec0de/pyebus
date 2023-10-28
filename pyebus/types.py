@@ -4,6 +4,8 @@ import re
 
 from .util import repr_
 
+# pylint: disable=abstract-method
+
 
 class Type:
     """Abstract Type."""
@@ -23,13 +25,13 @@ class Type:
     def __eq__(self, other):
         if self.__class__ is other.__class__:
             return self._ident() == other._ident()
-        else:
-            return NotImplemented
 
-    def _getargs(self):  # pylint: disable=R0201
+        return NotImplemented
+
+    def _getargs(self):
         return tuple()
 
-    def _getkwargs(self):  # pylint: disable=R0201
+    def _getkwargs(self):
         return tuple()
 
     def with_divider(self, divider):
@@ -201,8 +203,8 @@ class StrType(Type):
         """Get Comment on allowed values."""
         if self._length:
             return f"Up to {self._length} characters"
-        else:
-            return None
+
+        return None
 
 
 class HexType(Type):
@@ -283,8 +285,8 @@ class HexType(Type):
         """Get Comment on allowed values."""
         if self._length:
             return f"{self._length} Hex Bytes"
-        else:
-            return "Hex Bytes"
+
+        return "Hex Bytes"
 
 
 class IntType(Type):
@@ -403,8 +405,8 @@ class IntType(Type):
         """Fraction."""
         if self._divider and self._divider > 0:
             return 1 / self.divider
-        else:
-            return None
+
+        return None
 
     def _getargs(self):
         return (self.min_, self.max_)
@@ -431,8 +433,8 @@ class IntType(Type):
             if value > self.max_:
                 raise ValueError(f"Value {value} exceeds upper limit of {self.max_}")
             return value
-        else:
-            return None
+
+        return None
 
     def encode(self, value):
         """Encode `value`."""
@@ -446,16 +448,16 @@ class IntType(Type):
             if value > self.max_:
                 raise ValueError(f"Value {value} exceeds upper limit of {self.max_}")
             return value
-        else:
-            return "-"
+
+        return "-"
 
     @property
     def comment(self):
         """Get Comment on allowed values."""
         if self.divider and self.divider > 0:
             return f"Float within [{self.min_}:{self.max_}] with {self.frac} fraction"
-        else:
-            return f"Integer within [{self.min_}:{self.max_}]"
+
+        return f"Integer within [{self.min_}:{self.max_}]"
 
 
 class BoolType(Type):
@@ -504,8 +506,8 @@ class BoolType(Type):
         """Decode `value`."""
         if value not in ("-", ""):
             return bool(int(value))
-        else:
-            return None
+
+        return None
 
     def encode(self, value):
         """Encode `value`."""
@@ -513,12 +515,12 @@ class BoolType(Type):
             valuestr = str(value).lower()
             if valuestr in ("1", "true"):
                 return 1
-            elif valuestr in ("0", "false"):
+            if valuestr in ("0", "false"):
                 return 0
-            else:
-                raise ValueError(f"{value} is not a valid boolean")
-        else:
-            return "-"
+
+            raise ValueError(f"{value} is not a valid boolean")
+
+        return "-"
 
     @property
     def comment(self):
@@ -554,16 +556,16 @@ class FloatType(Type):
         if value not in ("-", ""):
             value = float(value)
             return value
-        else:
-            return None
+
+        return None
 
     def encode(self, value):
         """Encode `value`."""
         if value is not None:
             value = float(value)
             return str(value)
-        else:
-            return "-"
+
+        return "-"
 
     @property
     def comment(self):
@@ -601,8 +603,8 @@ class DateType(Type):
         """Decode `value`."""
         if value != self._NONE:
             return datetime.datetime.strptime(value, "%d.%m.%Y").date()
-        else:
-            return None
+
+        return None
 
     def encode(self, value):
         """Encode `value`."""
@@ -610,8 +612,8 @@ class DateType(Type):
             value = datetime.datetime.strptime(value, "%d.%m.%Y").date()
         if value is not None:
             return f"{value.day}.{value.month}.{value.year}"
-        else:
-            return self._NONE
+
+        return self._NONE
 
     @property
     def comment(self):
@@ -648,8 +650,8 @@ class TimeType(Type):
         if value != self._NONE:
             tstamp = datetime.datetime.strptime(value, "%H:%M:%S")
             return Time(tstamp.hour, tstamp.minute, tstamp.second)
-        else:
-            return None
+
+        return None
 
     def encode(self, value):
         """Encode `value`."""
@@ -657,8 +659,8 @@ class TimeType(Type):
             value = datetime.datetime.strptime(value, "%H:%M:%S")
         if value is not None:
             return f"{value.hour:02d}:{value.minute:02d}:{value.second:02d}"
-        else:
-            return self._NONE
+
+        return self._NONE
 
     @property
     def comment(self):
@@ -743,8 +745,8 @@ class HourMinuteType(TimeType):
             if self._minres and (value.minute % self._minres) != 0:
                 raise ValueError(f"Minute of {value} must be multiple of {self._minres}")
             return value
-        else:
-            return None
+
+        return None
 
     def encode(self, value):
         """Encode `value`."""
@@ -754,16 +756,14 @@ class HourMinuteType(TimeType):
             if self._minres and (value.minute % self._minres) != 0:
                 raise ValueError(f"Minute of {value} must be multiple of {self._minres}")
             return f"{value.hour:02d}:{value.minute:02d}"
-        else:
-            return self._NONE
+        return self._NONE
 
     @property
     def comment(self):
         """Get Comment on allowed values."""
         if self.minres:
             return f"HOUR:MINUTE with {self._minres}min granularity"
-        else:
-            return "HOUR:MINUTE"
+        return "HOUR:MINUTE"
 
 
 class DateTimeType(Type):
@@ -795,8 +795,7 @@ class DateTimeType(Type):
         """Decode `value`."""
         if value != self._NONE:
             return DateTime.strptime(value, "%d.%m.%Y %H:%M:%S")
-        else:
-            return None
+        return None
 
     def encode(self, value):
         """Encode `value`."""
@@ -804,8 +803,7 @@ class DateTimeType(Type):
             value = DateTime.strptime(value, "%d.%m.%Y %H:%M:%S")
         if value is not None:
             return f"{value.day}.{value.month}.{value.year} {value.hour:02d}:{value.minute:02d}:{value.second:02d}"
-        else:
-            return self._NONE
+        return self._NONE
 
     @property
     def comment(self):

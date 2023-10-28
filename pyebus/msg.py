@@ -57,8 +57,8 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
         value = self.value
         if value is not None and value is not NA and not isinstance(value, str) and self.fielddef.unit:
             return f"{value} {self.fielddef.unit}"
-        else:
-            return value
+
+        return value
 
 
 def filter_msg(msg=None, msgdefs=None):
@@ -70,13 +70,11 @@ def filter_msg(msg=None, msgdefs=None):
                 if ident == msgdef.ident:
                     if msg.msgdef == msgdef or not msg.valid:
                         return msg
-                    else:
-                        fields = tuple(
-                            Field(field.fielddef, field.value)
-                            for field in msg.fields
-                            if field.fielddef in msgdef.fields
-                        )
-                        return Msg(msgdef, fields)
+
+                    fields = tuple(
+                        Field(field.fielddef, field.value) for field in msg.fields if field.fielddef in msgdef.fields
+                    )
+                    return Msg(msgdef, fields)
         else:
             return msg
     return None

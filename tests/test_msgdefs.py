@@ -1,12 +1,11 @@
+"""Test Message Definitions."""
 import pathlib
 
 import pytest
 
 from pyebus import AUTO, FieldDef, MsgDef, MsgDefs
 from pyebus.msgdefdecoder import decode_msgdef
-from pyebus.types import HourMinuteType, IntType, TimeType
-
-from .util import cmp_
+from pyebus.types import HourMinuteType, IntType
 
 TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
@@ -21,7 +20,7 @@ def test_msgdefs0():
         if line:
             try:
                 msgdefs.add(decode_msgdef(line))
-            except ValueError as e:
+            except ValueError:
                 pass
 
     assert len(msgdefs) == 777
@@ -94,7 +93,7 @@ def test_msgdefs0():
         MsgDef("cc", "StatPowerOn", (FieldDef(0, "", IntType(0, 65534)),), read=True),
     ]
 
-    assert list(msgdefs.resolve(["mc.5/Timer.*/foo"])) == []
+    assert not list(msgdefs.resolve(["mc.5/Timer.*/foo"]))
     assert list(msgdefs.resolve(["mc.5/Timer.*/to*"])) == [
         MsgDef(
             "mc.5",
@@ -201,7 +200,7 @@ def test_msgdefs1():
         if line:
             try:
                 msgdefs.add(decode_msgdef(line))
-            except ValueError as e:
+            except ValueError:
                 pass
 
     assert len(msgdefs) == 413

@@ -1,5 +1,5 @@
+"""Test Message Decoder."""
 import pathlib
-import sys
 
 from pyebus import FieldDef, MsgDef, MsgDefs, UnknownMsgError, types
 from pyebus.msgdecoder import MsgDecoder
@@ -62,6 +62,7 @@ def _test(deffilepath, basepath, num):
 
 
 def test_noidx():
+    """Non-Index one."""
     msgdef = MsgDef(
         "cc",
         "StatPowerOn",

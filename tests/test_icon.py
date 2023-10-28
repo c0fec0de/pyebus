@@ -1,3 +1,4 @@
+"""Icon Attribute Tester."""
 import collections
 import pathlib
 
@@ -20,7 +21,7 @@ def test_msgdefs0():
             if line:
                 try:
                     msgdefs.add(decode_msgdef(line))
-                except ValueError as e:
+                except ValueError:
                     pass
 
     variants = collections.OrderedDict()

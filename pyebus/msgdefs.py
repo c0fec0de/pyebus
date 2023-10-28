@@ -20,8 +20,8 @@ class Pattern(collections.namedtuple("Pattern", "circuit name setprio fieldname"
         if mat:
             circuit, name, _, setprio, _, fieldname = mat.groups()
             return Pattern(circuit, name, setprio, fieldname)
-        else:
-            raise ValueError(f"Invalid pattern {pattern!r}")
+
+        raise ValueError(f"Invalid pattern {pattern!r}")
 
 
 class MsgDefs:
@@ -160,9 +160,9 @@ class MsgDefs:
         """
         total = len(self)
         fields = sum(len(msgdef.children) for msgdef in self)
-        read = sum([1 for msgdef in self if msgdef.read])
-        update = sum([1 for msgdef in self if msgdef.update])
-        write = sum([1 for msgdef in self if msgdef.write])
+        read = sum(1 for msgdef in self if msgdef.read)
+        update = sum(1 for msgdef in self if msgdef.update)
+        write = sum(1 for msgdef in self if msgdef.write)
         return f"{total} messages ({read} read, {update} update, {write} write) with {fields} fields"
 
     def __iter__(self):
@@ -183,8 +183,8 @@ class MsgDefs:
             for msgdef in other:
                 msgdefs.add(msgdef)
             return msgdefs
-        else:
-            return NotImplemented
+
+        return NotImplemented
 
     def __sub__(self, other):
         if self.__class__ is other.__class__:
@@ -194,5 +194,5 @@ class MsgDefs:
                 if msgdef not in othermsgs:
                     msgdefs.add(msgdef)
             return msgdefs
-        else:
-            return NotImplemented
+
+        return NotImplemented

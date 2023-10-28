@@ -52,8 +52,8 @@ class MsgDecoder:
         if not valuestr.startswith("ERR: "):
             fields = tuple(self._decodefields(msgdef, valuestr.strip()))
             return Msg(msgdef, fields)
-        else:
-            return BrokenMsg(msgdef, valuestr[len("ERR: ") :].strip())
+
+        return BrokenMsg(msgdef, valuestr[len("ERR: ") :].strip())
 
     @staticmethod
     def _decodefields(msgdef, valuestr):

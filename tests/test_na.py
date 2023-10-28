@@ -1,3 +1,4 @@
+"""Test Not-Available."""
 import pyebus
 
 

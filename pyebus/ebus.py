@@ -53,6 +53,7 @@ class Ebus:
     DEFAULT_SCANINTERVAL = 10
     DEFAULT_SCANS = 3
 
+    # pylint: disable=too-many-arguments
     def __init__(
         self,
         host=DEFAULT_HOST,
@@ -169,6 +170,7 @@ class Ebus:
         cnts = []
         while True:
             await self.connection.async_request(_CMD_FINDMSGDEFS)
+            # pylint: disable=consider-using-generator
             cnt = sum([1 async for line in self.connection.async_read()])
             cnts.append(cnt)
             if len(cnts) < self.scans or not all(cnt == cnts[-1] for cnt in cnts[-self.scans : -1]):
@@ -395,8 +397,7 @@ class Ebus:
             state = await self.connection.async_readresp(check=False)
             if state.startswith("signal acquired"):
                 return OK
-            else:
-                return state
+            return state
         except (ConnectionError, CommandError, ConnectionRefusedError):
             return "no ebusd connection"
 
@@ -459,7 +460,7 @@ class Ebus:
             CommandError: If command failed and `check==True`.
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.info(f"cmd({cmd!r}, infinite={infinite!r}, check={check!r})")
+        _LOGGER.info(f"cmd({cmd!r}, infinite=%r, check=%r)", infinite, check)
         await self.connection.async_write(cmd)
         async for line in self.connection.async_read(infinite=infinite, check=check):
             yield line
@@ -470,8 +471,7 @@ class Ebus:
             line = await self.connection.async_readresp(check=False)
         except CommandError as exc:  # pragma: no cover
             return BrokenMsg(msgdef, str(exc))
-        else:
-            return self._msgdecoder.decode_value(msgdef, line)
+        return self._msgdecoder.decode_value(msgdef, line)
 
     async def _async_listen(self, msgdefs):
         await self.connection.async_request("listen")
@@ -491,5 +491,5 @@ class Ebus:
             except UnknownMsgError:
                 pass
             except ValueError as exc:  # pragma: no cover
-                _LOGGER.warning(f"Cannot decode message in {line!r}: {exc}")
+                _LOGGER.warning("Cannot decode message in %r: %s", line, exc)
         return None

@@ -18,6 +18,8 @@ class Dummy:
         port (int): Port. Default is 8888.
     """
 
+    # pylint: disable=too-few-public-methods
+
     def __init__(self, dummydata=None):
         self.dummydata = dummydata or DummyData()
         self.data = collections.defaultdict(lambda: 0)

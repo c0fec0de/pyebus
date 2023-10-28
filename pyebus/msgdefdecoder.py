@@ -92,8 +92,8 @@ def _decodefields(values):
     if len(values) % 6 in (0, 3, 4, 5):
         chunks = _chunks(values, 6)
         return list(_createfields(chunks))
-    else:
-        raise ValueError()
+
+    raise ValueError()
 
 
 def _createfields(chunks):

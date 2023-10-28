@@ -21,6 +21,7 @@ class DummyConnection(Connection, Dummy):
         dummydata (DummyData): storage for responses
     """
 
+    # pylint: disable=too-many-arguments
     def __init__(
         self, host=DEFAULT_HOST, port=DEFAULT_PORT, autoconnect=False, timeout=DEFAULT_TIMEOUT, dummydata=None
     ):
@@ -61,7 +62,7 @@ class DummyConnection(Connection, Dummy):
 
     async def _async_readline(self, check=False):
         line = self.__respbuffer.popleft()
-        _LOGGER.debug(f"_readline() = {line!r}")
+        _LOGGER.debug("_readline() = %r", line)
         if line == "ERR: shutdown":
             raise Shutdown()
         if check and line.startswith("ERR: "):
