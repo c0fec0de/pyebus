@@ -1,3 +1,4 @@
+"""Test Prioritizer."""
 from datetime import timedelta
 from time import sleep
 
@@ -7,6 +8,7 @@ from pyebus import Field, FieldDef, Msg, MsgDef, MsgDefs, Prioritizer, UnknownMs
 
 
 def _init():
+    """Initialize."""
     fd0 = FieldDef(0, "temp", types.IntType(-127, 128))
     fd1 = FieldDef(1, "name", types.StrType(10))
     md = MsgDef("circuit", "name", [fd0, fd1], read=True)
@@ -18,12 +20,14 @@ def _init():
 
 
 def _step(p, md, m, slp, prio):
+    """Step."""
     p.notify(m)
     sleep(slp)
     assert p.get_prio(md) == prio
 
 
 def test_basic():
+    """Basic Testing."""
     p = Prioritizer(MsgDefs(), (0.01, 0.03))
     assert p.thresholds == (timedelta(microseconds=10000), timedelta(microseconds=30000))
     assert p.intervals == 3
@@ -31,7 +35,7 @@ def test_basic():
 
 def test_inc():
     """Straight increment."""
-    p, md, m0, m1 = _init()
+    p, md, m0, _ = _init()
     for m in [m0] * 2 * 2:
         _step(p, md, m, 0.005, 1)
     for m in [m0] * 2 * 6:
@@ -78,11 +82,13 @@ def test_dec_mid():
 
 
 def test_default_prio():
-    p, md, m0, m1 = _init()
+    """Test Default Priorities."""
+    p, md, _, _ = _init()
     assert p.get_prio(md) == 1
 
 
 def test_write_prio():
+    """Test Priority Writing."""
     msgdefs = MsgDefs()
     p = Prioritizer(msgdefs, (timedelta(seconds=0.03),))
     assert p.thresholds == (timedelta(seconds=0.03),)

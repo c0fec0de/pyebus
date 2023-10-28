@@ -1,5 +1,4 @@
-import asyncio
-import copy
+"""Dummy Connection Testing."""
 from unittest.mock import patch
 
 import pytest
@@ -8,19 +7,21 @@ import pyebus
 
 from .util import run
 
+# pylint: disable=no-member
+
 
 def test_connect():
     """Connection succeed."""
     con = pyebus.DummyConnection()
 
     async def test():
-        assert con.is_connected() == False
+        assert con.is_connected() is False
         await con.async_connect()
-        assert con.is_connected() == True
+        assert con.is_connected() is True
         await con.async_disconnect()
-        assert con.is_connected() == False
+        assert con.is_connected() is False
         await con.async_disconnect()
-        assert con.is_connected() == False
+        assert con.is_connected() is False
 
     run(test)
 
@@ -40,6 +41,7 @@ def test_command_error():
     """CommandError."""
     con = pyebus.DummyConnection()
 
+    # pylint: disable=unused-variable
     async def test():
         with pytest.raises(pyebus.CommandError):
             await con.async_write("unknown")

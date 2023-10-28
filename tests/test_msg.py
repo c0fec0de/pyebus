@@ -1,4 +1,4 @@
-import sys
+"""Test Messages."""
 
 import pyebus
 

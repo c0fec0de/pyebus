@@ -63,8 +63,7 @@ class Prioritizer:
         """Get Message Priority."""
         if msgdef.read:
             return self._get_prio(msgdef)
-        else:
-            return None
+        return None
 
     def _get_prio(self, msgdef):
         try:

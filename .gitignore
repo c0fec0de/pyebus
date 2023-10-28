@@ -1,8 +1,13 @@
+*.egg-info/
+*.xml
 .coverage
 .tox
 .venv
+.mypy_cache
+/.vscode
 __pycache__
-dist
-docs/_build/
-htmlcov
-pyebus.sublime-workspace
+build
+dist/
+docs/_readthedocs/
+poetry.lock
+setup.py

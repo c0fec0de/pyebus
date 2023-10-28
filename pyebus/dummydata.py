@@ -4,6 +4,8 @@
 class DummyData:
     """Dummy Data Container."""
 
+    # pylint: disable=too-few-public-methods
+
     def __init__(self):
         self.info = [
             "version: ebusd 21.1.v21.1-12-gccfc025",

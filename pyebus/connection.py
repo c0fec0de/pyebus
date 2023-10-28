@@ -100,7 +100,7 @@ class Connection:
             ConnectionRefusedError: If connection cannot be established
             ConnectionError: If not connected (`autoconnect==False`)
         """
-        _LOGGER.debug(f"write({message!r})")
+        _LOGGER.debug("write(%r)", message)
         await self._async_ensure_connection()
         await self._async_write(message)
 
@@ -116,7 +116,7 @@ class Connection:
         parts += [f"-{option} {value}" for option, value in kwargs.items() if value is not None]
         parts += [str(arg) for arg in args]
         message = " ".join(parts)
-        _LOGGER.debug(f"request({message!r})")
+        _LOGGER.debug("request(%r)", message)
         await self._async_ensure_connection()
         await self._async_write(message)
 
@@ -133,7 +133,7 @@ class Connection:
             CommandError: If command failed (`check==True`)
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.debug(f"read(infinite={infinite!r}, check={check!r})")
+        _LOGGER.debug("read(infinite=%r, check=%r)", infinite, check)
         await self._async_ensure_connection()
         while True:
             line = await self._async_readline(check=check)
@@ -156,7 +156,7 @@ class Connection:
             CommandError: If command failed (`check==True`) or trailing data.
             Shutdown: On EBUSD shutdown.
         """
-        _LOGGER.debug(f"readresp(check={check!r})")
+        _LOGGER.debug("readresp(check=%r)", check)
         await self._async_ensure_connection()
         line = await self._async_readline(check=check)
         empty = await self._async_readline()
@@ -171,7 +171,7 @@ class Connection:
     async def _async_readline(self, check=False):
         line = await self._reader.readline()
         line = line.decode("utf-8").rstrip()
-        _LOGGER.debug(f"_readline() = {line!r}")
+        _LOGGER.debug("_readline() = %r", line)
         if line == "ERR: shutdown":
             raise Shutdown()
         if check and line.startswith("ERR: "):

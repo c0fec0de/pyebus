@@ -4,11 +4,14 @@
 .. image:: https://img.shields.io/pypi/dm/pyebus.svg?label=pypi%20downloads
    :target: https://pypi.python.org/pypi/pyebus
 
-.. image:: https://travis-ci.com/c0fec0de/pyebus.svg?branch=main
-    :target: https://travis-ci.com/github/c0fec0de/pyebus
-
 .. image:: https://readthedocs.org/projects/pyebus/badge/?version=latest
     :target: https://pyebus.readthedocs.io/en/latest/?badge=latest
+
+.. image:: https://coveralls.io/repos/github/c0fec0de/pyebus/badge.svg
+    :target: https://coveralls.io/github/c0fec0de/pyebus
+
+.. image:: https://readthedocs.org/projects/pyebus/badge/?version=1.5.0
+    :target: https://pyebus.readthedocs.io/en/1.5.0/?badge=1.5.0
 
 .. image:: https://img.shields.io/pypi/pyversions/pyebus.svg
    :target: https://pypi.python.org/pypi/pyebus
@@ -19,8 +22,24 @@
 .. image:: https://img.shields.io/badge/code%20style-pep257-brightgreen.svg
    :target: https://www.python.org/dev/peps/pep-0257/
 
+.. image:: https://img.shields.io/badge/linter-pylint-%231674b1?style=flat
+   :target: https://www.pylint.org/
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
+
+.. image:: https://img.shields.io/github/contributors/c0fec0de/pyebus.svg
+   :target: https://github.com/c0fec0de/pyebus/graphs/contributors/
+
+.. image:: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+   :target: http://makeapullrequest.com
+
+.. image:: https://img.shields.io/github/issues-pr/c0fec0de/pyebus.svg
+   :target: https://github.com/c0fec0de/pyebus/pulls
+
+.. image:: https://img.shields.io/github/issues-pr-closed/c0fec0de/pyebus.svg
+   :target: https://github.com/c0fec0de/pyebus/pulls?q=is%3Apr+is%3Aclosed
+
 
 Pythonic interface to EBUSD_.
 
@@ -262,4 +281,4 @@ Testing
 
 See the coverage report at `htmlcov/index.html`.
 
-See the documentation at `docs/_build/html/index.html` 
+See the documentation at `docs/build/html/index.html`

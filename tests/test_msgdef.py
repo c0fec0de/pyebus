@@ -1,5 +1,4 @@
-import sys
-
+"""Message Definitions."""
 import pyebus
 
 _TYPE = pyebus.types.StrType(length=2)
@@ -10,10 +9,10 @@ def test_msgdef0():
     m = pyebus.MsgDef("circuit", "name", (), True, 5, False, False)
     assert m.circuit == "circuit"
     assert m.name == "name"
-    assert m.read == True
+    assert m.read is True
     assert m.prio == 5
-    assert m.write == False
-    assert m.update == False
+    assert m.write is False
+    assert m.update is False
     assert m.children == ()
     assert m.access == "r---5"
     assert m.ident == "circuit/name"
@@ -26,10 +25,10 @@ def test_msgdef1():
     m = pyebus.MsgDef("circuit", "name", (), False, None, True, False)
     assert m.circuit == "circuit"
     assert m.name == "name"
-    assert m.read == False
-    assert m.prio == None
-    assert m.write == True
-    assert m.update == False
+    assert m.read is False
+    assert m.prio is None
+    assert m.write is True
+    assert m.update is False
     assert m.children == ()
     assert m.access == "-w---"
     assert m.ident == "circuit/name"
@@ -42,10 +41,10 @@ def test_msgdef2():
     m = pyebus.MsgDef("circuit", "name", (), False, None, False, True)
     assert m.circuit == "circuit"
     assert m.name == "name"
-    assert m.read == False
-    assert m.prio == None
-    assert m.write == False
-    assert m.update == True
+    assert m.read is False
+    assert m.prio is None
+    assert m.write is False
+    assert m.update is True
     assert m.children == ()
     assert m.access == "--u--"
     assert m.ident == "circuit/name"
@@ -56,7 +55,7 @@ def test_msgdef2():
 def test_fielddef0():
     """FieldDef Example 0."""
     f = pyebus.FieldDef(0, "name", _TYPE, "unit")
-    m = pyebus.MsgDef("circuit", "name", (f,), False, None, False, True)
+    pyebus.MsgDef("circuit", "name", (f,), False, None, False, True)
 
     assert f.name == "name"
     assert f.type_ == _TYPE
@@ -78,7 +77,7 @@ def test_eq():
     n1 = pyebus.MsgDef("circuit", "name", (g1,), True, None, False, True)
     assert bool(m0 == m1)
     assert not bool(m0 == n1)
-    assert not bool(m0 == None)
+    assert not bool(m0 is None)
 
     assert hash(m0) == hash(m1)
     assert hash(m0) != hash(n1)

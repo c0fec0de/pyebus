@@ -24,12 +24,12 @@ def get_icon(fielddef, state=None):
     type_ = fielddef.type_
     if fielddef.unit in ("°C", "K", "°F"):
         return "mdi:thermometer"
-    elif isinstance(type_, (types.TimeType, types.DateType, types.DateTimeType, types.HourMinuteType)):
+    if isinstance(type_, (types.TimeType, types.DateType, types.DateTimeType, types.HourMinuteType)):
         return "mdi:timer"
-    elif isinstance(type_, types.EnumType):
+    if isinstance(type_, types.EnumType):
         if tuple(sorted(type_.values)) in [("off", "on"), ("no", "yes")]:
             if state in (False, "off", "no"):
                 return "mdi:toggle-switch-off"
-            else:
-                return "mdi:toggle-switch"
+
+            return "mdi:toggle-switch"
     return None

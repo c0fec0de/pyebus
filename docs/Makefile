@@ -6,7 +6,7 @@
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
-BUILDDIR      = _build
+BUILDDIR      = build
 SPHINXAPI     ?= sphinx-apidoc
 SPHINXAPIOPTS = -o api -M --force -e
 SPHINXAPIEXCLUDE = ../pyebus/cli ../pyebus/const.py

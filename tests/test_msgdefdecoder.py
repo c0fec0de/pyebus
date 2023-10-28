@@ -1,3 +1,4 @@
+"""Test Message Decoder."""
 import pathlib
 
 from pyebus import util

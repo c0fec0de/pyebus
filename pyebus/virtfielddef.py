@@ -59,15 +59,15 @@ def _merge_date_time(date, time, state=None):
     if date not in (None, NA) and time not in (None, NA):
         if state in (None, "valid", "ok"):
             return datetime.datetime(date.year, date.month, date.day, time.hour, time.minute, time.second)
-        else:
-            return state
+
+        return state
     return NA
 
 
 def _merge_sensor_status(value, sensor):
     if NA in (value, sensor):
         return NA
-    elif sensor == "ok":
+    if sensor == "ok":
         return value
-    else:
-        return sensor
+
+    return sensor
