@@ -10,8 +10,8 @@
 .. image:: https://coveralls.io/repos/github/c0fec0de/pyebus/badge.svg
     :target: https://coveralls.io/github/c0fec0de/pyebus
 
-.. image:: https://readthedocs.org/projects/pyebus/badge/?version=2.1.0
-    :target: https://pyebus.readthedocs.io/en/2.1.0/?badge=2.1.0
+.. image:: https://readthedocs.org/projects/pyebus/badge/?version=1.5.0
+    :target: https://pyebus.readthedocs.io/en/1.5.0/?badge=1.5.0
 
 .. image:: https://img.shields.io/pypi/pyversions/pyebus.svg
    :target: https://pypi.python.org/pypi/pyebus
